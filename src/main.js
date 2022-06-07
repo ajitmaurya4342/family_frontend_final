@@ -8,8 +8,7 @@ import BootstrapVue from 'bootstrap-vue'
 import Meta from 'vue-meta'
 import Slick from 'vue-slick'
 import VueLocalStorage from 'vue-localstorage'
-import GSignInButton from 'vue-google-signin-button'
-import FBSignInButton from 'vue-facebook-signin-button'
+
 import Carousel3d from 'vue-carousel-3d'
 // import {  } from "@/components/";
 import 'vue-tel-input/dist/vue-tel-input.css';
