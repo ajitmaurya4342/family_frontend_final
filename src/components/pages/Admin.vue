@@ -1,32 +1,61 @@
 <template>
-  <div id="app">
-    <section class="py-4 zoom-8" >
-      <div class="row" >
-        <div class="col-md-12 d-flex py-1 px-4 zoom-8 justify-content-space-between" >
+ <div>
+     <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar" :class="showToglebar?'active order-last':'order-last'" v-if="showToglebar">
+            <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+            </div>
 
-         <span class="title_header font-bold" style="margin-left:50px"> Family Tree</span> 
-           <span class="title_header font-bold" style="margin-left:50px" @click="redirectUrlLink"><u>Sign Up/Sign In</u></span> 
+           
+
+            
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info" @click="showToglebarttt">
+                        <i class="fas fa-align-left"></i>
+                        <span>Shroff Family</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <!-- <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li> -->
+                           
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div>
+                  <VueFamilyTree
+                    :tree="tree2"
+                    class="Family-tree"
+                    @card-click="cardClick"
+                    />
+
+           </div>
+           
         </div>
-        
-      </div>
-      <hr />
-       <VueFamilyTree
-      :tree="tree2"
-      @card-click="cardClick"
-    />
-    </section>
+    </div>
+ </div>
 
-  </div>
 </template>
 
 <script>
-import Vue from "vue";
-import VueRouter from "vue-router";
-import { Slide } from "vue-burger-menu"; // import the CSS transitions you wish to use, in this case we are using `Slide`
-
-import VueYouTubeEmbed from "vue-youtube-embed";
 import VueFamilyTree from 'vue-family-tree';
 import axios from "axios"
+import {URL_BASE} from "@/helper/constants"
 
 export default {
   data() {
@@ -85,31 +114,18 @@ export default {
         ]
       }],
       tree2:[],
-      refresh:true
+      refresh:true,
+      showToglebar:false
     };
   },
   mounted() {
-    this.pageName = this.$route.name;
 
-    window.addEventListener("online", this.updateOnlineStatus);
-    window.addEventListener("offline", this.updateOnlineStatus);
-  //   setTimeout(()=>{
-      
-  //    var element = document.getElementsByClassName("vue-family-card__image");
-  //    console.log(element.length)
-  //    for(let i=0;i<element.length;i++){
-  // element[i].classList.add("mystyle");
-
-  //    }
-
-
-  //   })
 
   },
   components: {
    
     VueFamilyTree,
-    Slide,
+
   },
 
   name: "app",
@@ -122,6 +138,42 @@ export default {
      this.getHeirachy()
   },
   methods: {
+      showToglebarttt(){
+          this.showToglebar=!this.showToglebar
+
+      },
+      setChildren(z){
+          if(z.is_married=='Y'){
+               if(z.hasOwnProperty("children")){
+                   if(z.children.length==0){
+                       let obj={
+                           firstPerson:{
+                               name:"Add New Child",
+                               image:`${URL_BASE}/plus-image.jpg`
+                           }
+                       }
+                       z.children.push(obj)
+
+                   }else{
+                         let obj={
+                           firstPerson:{
+                               name:"Add New Child",
+                               image:`${URL_BASE}/plus-image.jpg`
+                           }
+                       }
+                       z.children.map(k=>{
+                           this.setChildren(k)
+                       })
+                        z.children.push(obj)
+                       
+                   }
+
+              }
+              
+          }
+         
+
+      },
     redirectUrlLink(){
       window.open("http://localhost:8081")
     },
@@ -129,12 +181,20 @@ export default {
      
       var config = {
         method: 'get',
-        url: 'http://localhost:5000/admin/getHeirachy/1',
+        url: `${URL_BASE}/admin/getHeirachy/1`,
       
       };
         axios(config)
         .then( (response) =>{
-          this.tree2=response.data.Records
+            
+          let arrayNew=response.data.Records
+          arrayNew.map(z=>{
+             this.setChildren(z)
+                
+            })
+          
+          this.tree2=arrayNew
+
           this.$forceUpdate()
         })
         .catch(function (error) {
@@ -144,6 +204,7 @@ export default {
     },
      cardClick (item) {
       console.log(item);
+      this.showToglebarttt()
     },
     updateOnlineStatus(e) {
       const { type } = e;
@@ -158,6 +219,9 @@ export default {
   overflow:scroll !important;
    height:1200px !important;
    
+}
+.Family-tree{
+    zoom:0.6
 }
 .zoom-8{
   zoom:0.55
@@ -196,11 +260,11 @@ export default {
     border-right: 1px solid #000 !important;
  
 }
-/* .vue-family-tree__col+.vue-family-tree__col {
-    padding-left: 100px !important;
-    padding-right: 100px !important;
+.vue-family-tree__col+.vue-family-tree__col {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
 
-} */
+} 
 .vue-family-tree__branch .vue-family-tree__branch .vue-family-tree__col:after {
 
     background-color: #000000 ! important;

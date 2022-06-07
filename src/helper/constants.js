@@ -8,21 +8,7 @@
 // export const BASEURL = 'http://13.228.128.234';
 // export const BASEURL = 'http://api.gogocinema.com';
 
-var url = '';
-var stripePublicKey = '';
-if (window.location.host === 'www.gogocinema.com') {
-  url = 'https://api.gogocinema.com/api';
-  stripePublicKey = 'pk_live_XmcqMGTPozqA2i9zxpyWzcwg004N11eO55';
-} else if (window.location.host === 'test.gogocinema.com') {
-  url = 'https://api.gogocinema.com/api';
-  stripePublicKey = 'pk_live_XmcqMGTPozqA2i9zxpyWzcwg004N11eO55';
-} else if (window.location.host === 'test-uat.gogocinema.com') {
-  url = 'https://api-uat.gogocinema.com/api';
-  stripePublicKey = 'pk_live_XmcqMGTPozqA2i9zxpyWzcwg004N11eO55';
-} else {
-  url = 'https://api-bnb.gogocinema.com/api';
-  stripePublicKey = 'pk_test_ugVaLIFJmaQKYnVc71msZtST00aJhA3Tds';
-}
+var url = 'http://localhost:5000';
+
 export const URL_BASE = url;
-export const STRIPE_PUBLIC_KEY = stripePublicKey;
 export const PROJECT_TITLE = "GoGoCinema";
