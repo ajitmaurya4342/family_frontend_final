@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# which stage do you want to release
+select stage in UAT production
+do
+echo "You have chosen $stage"
+[ "$stage" != "" ] && break
+done
+
+# clean the gogocinema website repo
+COMMIT_PT=$(git log | head -n 1)
+git clean -fd
+git reset --hard
+
+# npm build
+rm -rf dist/*
+time npm i
+[ $? -ne 0 ] && echo -e "\n\n=========\nErr: npm install modules failed. Job aborted.\n\n" && exit 1
+time npm run build
+[ $? -ne 0 ] && echo -e "\n\n=========\nErr: npm build failed. Job aborted.\n\n" && exit 1
+
+# move to gogocinema website dist repo (a symbolic folder is here for this purpose)
+GOGO_WEBDIST="./gogocinema-website-dist"
+
+pushd ${GOGO_WEBDIST}/
+git checkout ${stage}
+git clean -fd
+git reset --hard
+git pull gitLab ${stage}
+popd
+
+rm -rf ${GOGO_WEBDIST}/*
+mv dist/* ${GOGO_WEBDIST}/
+cp -f .htaccess ${GOGO_WEBDIST}/
+
+# commit in gogocinema website dist repo
+pushd ${GOGO_WEBDIST}/
+ret=$(git status -s | wc -l)
+[ $ret -eq 0 ] && echo -e "\n\n=========\nInfo: nothing to commit. Job finished anyway.\n\n" && exit 0
+
+git add .
+git commit -m "\"build from gogo web ${COMMIT_PT}\""
+git push --force gitLab ${stage}
+popd
