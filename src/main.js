@@ -134,9 +134,7 @@ Vue.mixin({
   }
 })
 Vue.use(Carousel3d);
-Vue.use(VeeValidate);
-Vue.use(GSignInButton)
-Vue.use(FBSignInButton)
+Vue.use(VeeValidate); 
 Vue.use(Meta)
 Vue.use(BootstrapVue)
 Vue.use(VueLocalStorage, {
