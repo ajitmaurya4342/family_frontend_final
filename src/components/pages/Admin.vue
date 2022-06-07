@@ -1,15 +1,131 @@
 <template>
  <div>
      <div class="wrapper">
+       <div  :class="showToglebar?'background-blurr':''"></div>
         <!-- Sidebar  -->
         <nav id="sidebar" :class="showToglebar?'active order-last':'order-last'" v-if="showToglebar">
             <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
+                <h5 >Add New User </h5>
+                <h5  class="close-header"  @click="showToglebarttt">x</h5>
             </div>
 
-           
+            <b-container class="my-4">
+               <b-row class="my-2">
+              
+                <b-col sm="12">
+                 <label style="color:green;font-size:14px">Creating Son of  {{storeParentDetail.parent_detail.first_name}}  {{storeParentDetail.parent_detail.last_name}}</label>
+                </b-col>
+              </b-row>
+              <b-row class="my-2">
+              
+                <b-col sm="12">
+                  <b-form-input  placeholder="Enter Your First Name" v-model="userForm.first_name"></b-form-input>
+                </b-col>
+              </b-row>
+
+              <b-row class="my-2">
+              
+                <b-col sm="12">
+                  <b-form-input  placeholder="Enter Your Last Name" v-model="userForm.last_name"></b-form-input>
+                </b-col>
+              </b-row>
+
+                <b-row class="my-2">
+                 
+                <b-col sm="12">
+                     <b-form-group label="Gender" v-slot="{ ariaDescribedby }">
+                    <b-form-radio-group
+                      id="radio-group-2"
+                      v-model="userForm.gender"
+                      :aria-describedby="ariaDescribedby"
+                      name="gender"
+                    >
+                      <b-form-radio value="Male">Male</b-form-radio>
+                      <b-form-radio value="Female">Female</b-form-radio>
+ 
+                    </b-form-radio-group>
+                  </b-form-group>
+                </b-col>
+              </b-row>
+
+                <b-row class="my-2">
+                 
+                <b-col sm="12">
+                     <b-form-group label="Are you Married?" v-slot="{ ariaDescribedby }">
+                    <b-form-radio-group
+                      id="radio-group-2"
+                      v-model="userForm.is_married"
+                      :aria-describedby="ariaDescribedby"
+                      name="married_status"
+                    >
+                      <b-form-radio value="Y">Yes</b-form-radio>
+                      <b-form-radio value="N">No</b-form-radio>
+ 
+                    </b-form-radio-group>
+                  </b-form-group>
+                </b-col>
+              </b-row>
+
+              <b-row class="my-2">
+                <b-col sm="12">
+                  <b-form-input  placeholder="Enter Your Email" type="email" v-model="userForm.email"></b-form-input>
+                </b-col>
+              </b-row>
+
+              <b-row class="my-2">
+                <b-col sm="12">
+                  <b-form-input  placeholder="Enter Your Phone" type="number" v-model="userForm.phone_number"></b-form-input>
+                </b-col>
+              </b-row>
+
+               <b-row class="my-2">
+                  <b-col sm="12">
+                 <label class="title-input">Date of Birth</label>
+                </b-col>
+                <b-col sm="12">
+                  <b-form-input  type="date" ></b-form-input>
+                </b-col>
+              </b-row>
+
+               <b-row class="my-2">
+                 <b-col sm="12">
+                 <label class="title-input">Date of Death</label>
+                </b-col>
+                <b-col sm="12">
+                  <b-form-input  type="date" ></b-form-input>
+                </b-col>
+              </b-row>
+
+               
+
+                <b-row class="my-2">
+                 
+                <b-col sm="12">
+                <b-form-file
+                v-model="userForm.picture"
+               
+                placeholder="Upload Your Profile"
+              ></b-form-file>
+                </b-col>
+              </b-row>
+
+
+                <b-row class="my-2">
+                 
+                <b-col sm="12" class="text-center">
+                 <button type="button" id="sidebarCollapse" class="btn btn-info" @click="saveUser" :disabled="isSaveButtonEnable">
+                        <i class="fas fa-align-left"></i>
+                        <span>Save</span>
+                    </button>
+                </b-col>
+              </b-row>
 
             
+              
+              
+          </b-container>
+              
+
         </nav>
 
         <!-- Page Content  -->
@@ -115,7 +231,19 @@ export default {
       }],
       tree2:[],
       refresh:true,
-      showToglebar:false
+      showToglebar:false,
+      userForm:{
+        first_name: "",
+        last_name: "",
+        phone_number:"",
+        email:"",
+        dob:"",
+        picture:"",
+        is_married:"",
+        gender:""
+        
+      },
+      storeParentDetail:null
     };
   },
   mounted() {
@@ -125,6 +253,23 @@ export default {
   components: {
    
     VueFamilyTree,
+
+  },
+  computed:{
+     isSaveButtonEnable(){
+       let check=false;
+       let validation=["first_name","last_name","gender","is_married"]
+      validation.map(z=>{
+        if(!this.userForm[z]){
+          check=true;
+        }
+      })
+      if(this.userForm.first_name<3 || this.userForm.last_name<3 ){
+         check=true;
+      }
+
+      return check
+     }
 
   },
 
@@ -138,9 +283,16 @@ export default {
      this.getHeirachy()
   },
   methods: {
-      showToglebarttt(){
-          this.showToglebar=!this.showToglebar
+    saveUser(){
 
+    },
+      showToglebarttt(item){
+          window.scrollTo(0,0)
+          this.showToglebar=!this.showToglebar
+          if(item){
+            this.storeParentDetail=item
+          }
+        
       },
       setChildren(z){
           if(z.is_married=='Y'){
@@ -149,7 +301,10 @@ export default {
                        let obj={
                            firstPerson:{
                                name:"Add New Child",
-                               image:`${URL_BASE}/plus-image.jpg`
+                               image:`${URL_BASE}/plus-image.jpg`,
+                               parent_detail:{
+                                 ...z
+                               }
                            }
                        }
                        z.children.push(obj)
@@ -158,7 +313,10 @@ export default {
                          let obj={
                            firstPerson:{
                                name:"Add New Child",
-                               image:`${URL_BASE}/plus-image.jpg`
+                               image:`${URL_BASE}/plus-image.jpg`,
+                                parent_detail:{
+                                 ...z
+                               }
                            }
                        }
                        z.children.map(k=>{
@@ -204,7 +362,7 @@ export default {
     },
      cardClick (item) {
       console.log(item);
-      this.showToglebarttt()
+      this.showToglebarttt(item)
     },
     updateOnlineStatus(e) {
       const { type } = e;
@@ -268,6 +426,21 @@ export default {
 .vue-family-tree__branch .vue-family-tree__branch .vue-family-tree__col:after {
 
     background-color: #000000 ! important;
+}
+.close-header{
+  float:right;
+  height:27px;
+  width:27px;
+  border-radius:27px;
+  background-color:#000000 !important;
+  color: #fff;
+    text-align: center;
+    font-weight: bold;
+    cursor:pointer
+}
+.title-input{
+  font-size: 14px;
+    margin-bottom: 4px;
 }
 
 
