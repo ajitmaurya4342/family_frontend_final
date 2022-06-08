@@ -272,6 +272,7 @@
       <div>
         <VueFamilyTree
           :tree="tree2"
+          :enable-drag="false"
           class="Family-tree"
           :wrapper-styles="{position: 'relative', width: '100%', height: dynamicheight}"
           @card-click="cardClick"
@@ -429,6 +430,7 @@ methods: {
 
   },
     toEditProfile(){
+       window.scrollTo(200,0)
     this.showProfile=!this.showProfile
     this.editProfile=!this.editProfile
     },
@@ -567,7 +569,7 @@ methods: {
 
 
         if(item && item.hasOwnProperty("parent_detail")){
-            window.scrollTo(0,0)
+            window.scrollTo(200,0)
           this.storeParentDetail=item
           this.userForm.last_name=item.parent_detail.last_name
         }else{
@@ -578,7 +580,8 @@ methods: {
           if(item &&  item.hasOwnProperty("user_detail")){
             this.is_son_or_daughter=item.is_son_or_daugter
             this.checkChildrenExist=item.checkChildrenExist
-              window.scrollTo(0,0)
+            window.scrollTo(200,0)
+
               this.userDetail=item.user_detail
               if(this.is_admin_page){
                 this.editProfile=true
@@ -701,6 +704,11 @@ overflow: scroll !important;
 }
 .Family-tree {
 zoom: 0.6;
+}
+@media (max-width: 768px) {
+  .Family-tree {
+  zoom: 0.4;
+  }
 }
 .zoom-8 {
 zoom: 0.55;

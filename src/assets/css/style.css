@@ -3916,6 +3916,7 @@ a.article:hover {
   #sidebar {
       margin-right: -400px;
   }
+  
   #sidebar.active {
       margin-right: 0;
   }
