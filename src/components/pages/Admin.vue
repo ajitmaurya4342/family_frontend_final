@@ -5,15 +5,22 @@
         <!-- Sidebar  -->
         <nav id="sidebar" :class="showToglebar?'active order-last':'order-last'" v-if="showToglebar">
             <div class="sidebar-header">
-                <h5 >Add New User </h5>
+                <h5 >{{editProfile?'Update User Detail':'Add New User'}}</h5>
                 <h5  class="close-header"  @click="showToglebarttt">x</h5>
             </div>
 
             <b-container class="my-4">
-               <b-row class="my-2">
+               <b-row class="my-2" v-if="storeParentDetail">
               
-                <b-col sm="12" v-if="storeParentDetail">
+                <b-col sm="12" >
                  <label style="color:green;font-size:14px">Creating Son of  {{storeParentDetail.parent_detail.first_name}}  {{storeParentDetail.parent_detail.last_name}}</label>
+                </b-col>
+              </b-row>
+
+              <b-row class="my-2" v-if="!is_son_or_daughter">
+              
+                <b-col sm="12" >
+                 <label style="color:green;font-size:14px">  {{userForm.gender=='Female'?'Wife Of ':'Husband Of'}}  {{userDetail.relation_of}}</label>
                 </b-col>
               </b-row>
               <b-row class="my-2">
@@ -30,7 +37,9 @@
                 </b-col>
               </b-row>
 
-                <b-row class="my-2">
+              <template v-if="is_son_or_daughter && !checkChildrenExist">
+
+                <b-row class="my-2" >
                  
                 <b-col sm="12">
                      <b-form-group label="Gender" v-slot="{ ariaDescribedby }">
@@ -48,7 +57,7 @@
                 </b-col>
               </b-row>
 
-                <b-row class="my-2">
+                <b-row class="my-2" >
                  
                 <b-col sm="12">
                      <b-form-group label="Are you Married?" v-slot="{ ariaDescribedby }">
@@ -65,6 +74,7 @@
                   </b-form-group>
                 </b-col>
               </b-row>
+              </template>
 
               <b-row class="my-2">
                 <b-col sm="12">
@@ -83,7 +93,7 @@
                  <label class="title-input">Date of Birth</label>
                 </b-col>
                 <b-col sm="12">
-                  <b-form-input  type="date" ></b-form-input>
+                  <b-form-input  type="date"  v-model="userForm.dob"></b-form-input>
                 </b-col>
               </b-row>
 
@@ -92,7 +102,7 @@
                  <label class="title-input">Date of Death</label>
                 </b-col>
                 <b-col sm="12">
-                  <b-form-input  type="date" ></b-form-input>
+                  <b-form-input  type="date" v-model="userForm.dod"></b-form-input>
                 </b-col>
               </b-row>
 
@@ -231,18 +241,24 @@ export default {
       refresh:true,
       showToglebar:true,
       userForm:{
+        user_id:"",
         first_name: "",
         last_name: "",
         phone_number:"",
         email:"",
         dob:"",
+        dod:"",
         picture:"",
         is_married:"",
         gender:""
         
       },
-     
-      storeParentDetail:null
+      editProfile:false,
+      is_son_or_daughter:true,
+      userDetail:null,
+      storeParentDetail:null,
+      checkChildrenExist:false
+      
     };
   },
   mounted() {
@@ -284,9 +300,17 @@ export default {
     resetList(){
      this.getHeirachy();
      this.showToglebarttt()
-     Object.keys(this.userForm).map(z=>{
-       this.userForm[z]=""
-     })
+     this.resetForm()
+    
+    },
+    resetForm(){
+      this.editProfile=false;
+      this.is_son_or_daughter=true;
+      this.userDetail=null;
+      this.checkChildrenExist=false
+    Object.keys(this.userForm).map(z=>{
+          this.userForm[z]=""
+        })
     },
     saveUser(){ 
       this.showLoading()
@@ -372,13 +396,31 @@ export default {
       
      },
       showToglebarttt(item){
-          window.scrollTo(0,0)
-          this.showToglebar=!this.showToglebar
+         
+        
           if(item && item.hasOwnProperty("parent_detail")){
+             window.scrollTo(0,0)
             this.storeParentDetail=item
+            this.userForm.last_name=item.parent_detail.last_name
           }else{
              this.storeParentDetail=null
+             this.resetForm()
           }
+
+            if(item &&  item.hasOwnProperty("user_detail")){
+              this.is_son_or_daughter=item.is_son_or_daugter
+              this.checkChildrenExist=item.checkChildrenExist
+               window.scrollTo(0,0)
+               this.userDetail=item.user_detail
+              this.editProfile=true
+              Object.keys(this.userForm).map(z=>{
+               this.userForm[z]=this.userDetail[z]
+               })
+          }
+          
+           this.showToglebar=!this.showToglebar
+
+          
         
       },
       setChildren(z){
@@ -452,6 +494,9 @@ export default {
     },
      cardClick (item) {
       console.log(item);
+      if(item.user_detail){
+
+      }
       this.showToglebarttt(item)
     },
     updateOnlineStatus(e) {
