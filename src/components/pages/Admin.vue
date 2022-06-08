@@ -12,7 +12,7 @@
             <b-container class="my-4">
                <b-row class="my-2">
               
-                <b-col sm="12">
+                <b-col sm="12" v-if="storeParentDetail">
                  <label style="color:green;font-size:14px">Creating Son of  {{storeParentDetail.parent_detail.first_name}}  {{storeParentDetail.parent_detail.last_name}}</label>
                 </b-col>
               </b-row>
@@ -120,8 +120,6 @@
                 </b-col>
               </b-row>
 
-            
-              
               
           </b-container>
               
@@ -231,7 +229,7 @@ export default {
       }],
       tree2:[],
       refresh:true,
-      showToglebar:false,
+      showToglebar:true,
       userForm:{
         first_name: "",
         last_name: "",
@@ -243,11 +241,11 @@ export default {
         gender:""
         
       },
+     
       storeParentDetail:null
     };
   },
   mounted() {
-
 
   },
   components: {
@@ -280,17 +278,106 @@ export default {
   },
    beforeMount() {
    
-     this.getHeirachy()
+     this.resetList()
   },
   methods: {
-    saveUser(){
+    resetList(){
+     this.getHeirachy();
+     this.showToglebarttt()
+     Object.keys(this.userForm).map(z=>{
+       this.userForm[z]=""
+     })
+    },
+    saveUser(){ 
+      this.showLoading()
+     var config = {
+        method: 'post',
+        url: `${URL_BASE}/admin/addEditUsers/1`,
+          headers: { 
+      'Content-Type': 'application/json'
+    },
+        data:JSON.stringify(this.userForm)
+      
+      };
+        axios(config)
+        .then( (response) =>{
+            let {data}=response
+            this.hideLoading()
+          if(data.status){
+
+            this.linkRelationOnlySonAndDaughter(data.Records[0].user_id).then(response=>{
+             this.$toasted.show(data.message,{type:"success"})
+              this.resetList()
+            })
+           
+              
+          }else{
+            this.$toasted.show(data.message || data.msg || "Something Went Wrong",{type:"error"})
+
+          }
+         // this.tree2=arrayNew
+
+          this.$forceUpdate()
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+     
 
     },
+     linkRelationOnlySonAndDaughter(user_id){
+     return  new Promise((resolve)=>{
+        if(this.storeParentDetail){
+          let obj={
+             parent_id:this.storeParentDetail.parent_detail.user_id,
+          }
+          if(this.userForm.gender=='Male'){
+             obj["is_son_of"]='Y';
+          }else{
+             obj["is_daughter_of"]='Y';
+          }
+
+          console.log("Request Link",obj)
+          var config = {
+            method: 'post',
+            url: `${URL_BASE}/admin/linkRelation/${user_id}/1`,
+            data:JSON.stringify(obj),
+              headers: { 
+      'Content-Type': 'application/json'
+    },
+          
+          };
+            axios(config)
+            .then( (response) =>{
+              console.log(response,"Relation Link")
+                if(data.status){
+                return resolve(true)
+                }else{
+                return resolve(false)
+                }
+            })
+            .catch(function (error) {
+            return resolve(false)
+            });
+
+
+         
+        }else{
+          console.log("No Relation Changed")
+            return resolve(true)
+        }
+          
+     })
+      
+     },
       showToglebarttt(item){
           window.scrollTo(0,0)
           this.showToglebar=!this.showToglebar
-          if(item){
+          if(item && item.hasOwnProperty("parent_detail")){
             this.storeParentDetail=item
+          }else{
+             this.storeParentDetail=null
           }
         
       },
@@ -335,8 +422,8 @@ export default {
     redirectUrlLink(){
       window.open("http://localhost:8081")
     },
-     getHeirachy(){
-     
+     getHeirachy(){ 
+         this.showLoading()
       var config = {
         method: 'get',
         url: `${URL_BASE}/admin/getHeirachy/1`,
@@ -352,12 +439,15 @@ export default {
             })
           
           this.tree2=arrayNew
+          this.hideLoading()
+
 
           this.$forceUpdate()
         })
         .catch(function (error) {
           console.log(error);
         });
+    
 
     },
      cardClick (item) {

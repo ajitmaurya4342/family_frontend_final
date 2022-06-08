@@ -14,10 +14,11 @@ import Carousel3d from 'vue-carousel-3d'
 import 'vue-tel-input/dist/vue-tel-input.css';
 import VeeValidate from "vee-validate";
 import CryptoJS from "crypto-js";
+import Toasted from 'vue-toasted';
 import _ from "lodash";
 var secretKey = "HereIsTheMySecretKey_LOL";
 var VueScrollTo = require('vue-scrollto');
-
+Vue.use(Toasted,{duration:2000})
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'slick-carousel/slick/slick.css'
