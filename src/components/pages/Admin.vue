@@ -272,7 +272,7 @@
       <div>
         <VueFamilyTree
           :tree="tree2"
-          :enable-drag="false"
+          :enable-drag="true"
           class="Family-tree"
           :wrapper-styles="{position: 'relative', width: '100%', height: dynamicheight}"
           @card-click="cardClick"
