@@ -110,15 +110,31 @@
 
                 <b-row class="my-2">
                  
-                <b-col sm="12">
+                <b-col sm="8">
                 <b-form-file
                 v-model="userForm.picture"
-               
+                 v-on:change="uploadProfile($event.target)"
+               accept="image/png, image/gif, image/jpeg"
                 placeholder="Upload Your Profile"
               ></b-form-file>
+
+                </b-col>
+                <b-col sm="4" v-if="userForm.picture">
+               
+                     <img :src="baseUrl+userForm.picture" alt="avatar" class="img-responsive ">
+                </b-col>
+                       
+                 </b-row>
+
+                 
+               <b-row class="my-2" v-if="editProfile" >
+                  <b-col sm="12">
+                 <label class="title-input">About You</label>
+                </b-col>
+                <b-col sm="12">
+                  <b-form-textarea  v-model="userForm.description"></b-form-textarea>
                 </b-col>
               </b-row>
-
 
                 <b-row class="my-2">
                  
@@ -165,6 +181,7 @@
                   <VueFamilyTree
                     :tree="tree2"
                     class="Family-tree"
+                    :wrapper-styles="{position: 'relative', width: '100%', height: dynamicheight}"
                     @card-click="cardClick"
                     />
 
@@ -180,6 +197,7 @@
 import VueFamilyTree from 'vue-family-tree';
 import axios from "axios"
 import {URL_BASE} from "@/helper/constants"
+import _ from "lodash"
 
 export default {
   data() {
@@ -243,6 +261,7 @@ export default {
       userForm:{
         user_id:"",
         first_name: "",
+        description:"",
         last_name: "",
         phone_number:"",
         email:"",
@@ -257,7 +276,9 @@ export default {
       is_son_or_daughter:true,
       userDetail:null,
       storeParentDetail:null,
-      checkChildrenExist:false
+      checkChildrenExist:false,
+      baseUrl:URL_BASE,
+      userlevel:0
       
     };
   },
@@ -270,6 +291,11 @@ export default {
 
   },
   computed:{
+    dynamicheight(){
+      let heightOfDiv=this.userlevel>=4?(this.userlevel*250) + 200:800;
+      console.log(this.userlevel)
+    return `${heightOfDiv}px`
+    },
      isSaveButtonEnable(){
        let check=false;
        let validation=["first_name","last_name","gender","is_married"]
@@ -395,6 +421,44 @@ export default {
      })
       
      },
+        uploadProfile: function(image) {
+      
+           var file = image.files[0];
+           console.log(file," //   var formdata = new FormData()");
+          //     formData.append("image", image, filename);
+          //     formData.append("imagePath", "Gallery Image");
+          //     formData.append("height", 1);
+          //     formData.append("width", 1);
+          //   formData.append("size",1);
+          //  var axios = require('axios')")
+
+              var data = new FormData();
+              data.append('image', file);
+              data.append('height', '24');
+              data.append('width', '16');
+              data.append('imagePath', 'Gallery Image');
+              data.append('size', '314');
+
+              var config = {
+                  method: 'post',
+                  url: `${URL_BASE}/admin/uploadimage`,
+                  headers: { 
+                  },
+                  data : data
+                };
+
+                axios(config)
+                .then( (response) =>{
+                  this.userForm.picture=`${response.data.path}`
+                  // console.log(JSON.stringify(response.data));
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+
+         
+        
+       },
       showToglebarttt(item){
          
         
@@ -424,7 +488,14 @@ export default {
         
       },
       setChildren(z){
+         this.userlevel=(z.user_level && z.user_level>this.userlevel)?z.user_level:this.userlevel;
+        
           if(z.is_married=='Y'){
+       
+              if(z.children.length>0){
+                z.children=_.orderBy(z.children,["user_id","asc"])
+
+              }
                if(z.hasOwnProperty("children")){
                    if(z.children.length==0){
                        let obj={
@@ -510,7 +581,7 @@ export default {
 <style >
 .vue-family-tree{
   overflow:scroll !important;
-   height:1200px !important;
+   /* height:1200px !important; */
    
 }
 .Family-tree{
@@ -576,6 +647,14 @@ export default {
 .title-input{
   font-size: 14px;
     margin-bottom: 4px;
+}
+
+.img-responsive{
+      height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    object-fit: fill;
+    background:black
 }
 
 
