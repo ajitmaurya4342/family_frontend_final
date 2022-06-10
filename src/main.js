@@ -8,16 +8,11 @@ import BootstrapVue from 'bootstrap-vue'
 import Meta from 'vue-meta'
 import Slick from 'vue-slick'
 import VueLocalStorage from 'vue-localstorage'
-
-import Carousel3d from 'vue-carousel-3d'
 // import {  } from "@/components/";
-import 'vue-tel-input/dist/vue-tel-input.css';
-import VeeValidate from "vee-validate";
 import CryptoJS from "crypto-js";
 import Toasted from 'vue-toasted';
 import _ from "lodash";
 var secretKey = "HereIsTheMySecretKey_LOL";
-var VueScrollTo = require('vue-scrollto');
 Vue.use(Toasted,{duration:2000})
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -25,25 +20,11 @@ import 'slick-carousel/slick/slick.css'
 import './assets/css/slick-theme.css'
 import './assets/css/style.css'
 import './assets/css/responsive.css'
-import VueTelInput from 'vue-tel-input'
 import VueHtmlToPaper from 'vue-html-to-paper';
-import infiniteScroll from 'vue-infinite-scroll'
-Vue.use(infiniteScroll)
+
 var pjson = require('../package.json');
 // Vue.use(VueScrollTo)
-Vue.use(VueScrollTo, {
-  container: "body",
-  duration: 500,
-  easing: "ease",
-  offset: -100,
-  force: true,
-  cancelable: true,
-  onStart: false,
-  onDone: false,
-  onCancel: false,
-  x: false,
-  y: true
-});
+
 
 const options = {
   name: '_blank',
@@ -58,7 +39,6 @@ const options = {
   ]
 }
 Vue.use(VueHtmlToPaper, options);
-Vue.use(VueTelInput)
 
 // Import component
 import Loading from "vue-loading-overlay";
@@ -133,9 +113,7 @@ Vue.mixin({
     },
 
   }
-})
-Vue.use(Carousel3d);
-Vue.use(VeeValidate); 
+}) 
 Vue.use(Meta)
 Vue.use(BootstrapVue)
 Vue.use(VueLocalStorage, {

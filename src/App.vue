@@ -16,10 +16,8 @@
 <script>
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { Slide } from "vue-burger-menu"; // import the CSS transitions you wish to use, in this case we are using `Slide`
 import Header from "@/components/partials/header.vue";
 import Footer from "@/components/partials/footer.vue";
-import VueYouTubeEmbed from "vue-youtube-embed";
 import connectionLost from "./components/partials/connectionLost";
 
 export default {
@@ -40,7 +38,6 @@ export default {
   components: {
     Header,
     Footer,
-    Slide,
     connectionLost
   },
 
