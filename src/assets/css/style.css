@@ -4,7 +4,11 @@
 @font-face {
   font-family: "Bw Modelica SS01";
   src: url("../fonts/BwModelicaSS01-ExtraBold.eot");
-  src: url("../fonts/BwModelicaSS01-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../fonts/BwModelicaSS01-ExtraBold.woff2") format("woff2"), url("../fonts/BwModelicaSS01-ExtraBold.woff") format("woff"), url("../fonts/BwModelicaSS01-ExtraBold.ttf") format("truetype");
+  src: url("../fonts/BwModelicaSS01-ExtraBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/BwModelicaSS01-ExtraBold.woff2") format("woff2"),
+    url("../fonts/BwModelicaSS01-ExtraBold.woff") format("woff"),
+    url("../fonts/BwModelicaSS01-ExtraBold.ttf") format("truetype");
   /* url('../fonts/BwModelicaSS01-ExtraBold.svg#BwModelicaSS01-ExtraBold') format('svg'); */
   font-weight: 800;
   font-style: normal;
@@ -13,7 +17,10 @@
 @font-face {
   font-family: "Bw Modelica";
   src: url("../fonts/BwModelica-Medium.eot");
-  src: url("../fonts/BwModelica-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/BwModelica-Medium.woff2") format("woff2"), url("../fonts/BwModelica-Medium.woff") format("woff"), url("../fonts/BwModelica-Medium.ttf") format("truetype");
+  src: url("../fonts/BwModelica-Medium.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/BwModelica-Medium.woff2") format("woff2"),
+    url("../fonts/BwModelica-Medium.woff") format("woff"),
+    url("../fonts/BwModelica-Medium.ttf") format("truetype");
   /* url('../fonts/BwModelica-Medium.svg#BwModelica-Medium') format('svg'); */
   font-weight: 500;
   font-style: normal;
@@ -22,7 +29,10 @@
 @font-face {
   font-family: "Bw Modelica";
   src: url("../fonts/BwModelica-Bold.eot");
-  src: url("../fonts/BwModelica-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/BwModelica-Bold.woff2") format("woff2"), url("../fonts/BwModelica-Bold.woff") format("woff"), url("../fonts/BwModelica-Bold.ttf") format("truetype");
+  src: url("../fonts/BwModelica-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/BwModelica-Bold.woff2") format("woff2"),
+    url("../fonts/BwModelica-Bold.woff") format("woff"),
+    url("../fonts/BwModelica-Bold.ttf") format("truetype");
   /* url('../fonts/BwModelica-Bold.svg#BwModelica-Bold') format('svg'); */
   font-weight: bold;
   font-style: normal;
@@ -31,7 +41,10 @@
 @font-face {
   font-family: "Bw Modelica";
   src: url("../fonts/BwModelica-Black.eot");
-  src: url("../fonts/BwModelica-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/BwModelica-Black.woff2") format("woff2"), url("../fonts/BwModelica-Black.woff") format("woff"), url("../fonts/BwModelica-Black.ttf") format("truetype");
+  src: url("../fonts/BwModelica-Black.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/BwModelica-Black.woff2") format("woff2"),
+    url("../fonts/BwModelica-Black.woff") format("woff"),
+    url("../fonts/BwModelica-Black.ttf") format("truetype");
   /* url('../fonts/BwModelica-Black.svg#BwModelica-Black') format('svg'); */
   font-weight: 900;
   font-style: normal;
@@ -40,7 +53,10 @@
 @font-face {
   font-family: "Bw Modelica";
   src: url("../fonts/BwModelica-Light.eot");
-  src: url("../fonts/BwModelica-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/BwModelica-Light.woff2") format("woff2"), url("../fonts/BwModelica-Light.woff") format("woff"), url("../fonts/BwModelica-Light.ttf") format("truetype");
+  src: url("../fonts/BwModelica-Light.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/BwModelica-Light.woff2") format("woff2"),
+    url("../fonts/BwModelica-Light.woff") format("woff"),
+    url("../fonts/BwModelica-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
@@ -48,7 +64,10 @@
 @font-face {
   font-family: "Bw Modelica";
   src: url("../fonts/BwModelica-Regular.eot");
-  src: url("../fonts/BwModelica-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/BwModelica-Regular.woff2") format("woff2"), url("../fonts/BwModelica-Regular.woff") format("woff"), url("../fonts/BwModelica-Regular.ttf") format("truetype");
+  src: url("../fonts/BwModelica-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/BwModelica-Regular.woff2") format("woff2"),
+    url("../fonts/BwModelica-Regular.woff") format("woff"),
+    url("../fonts/BwModelica-Regular.ttf") format("truetype");
   /* url('../fonts/BwModelica-Regular.svg#BwModelica-Regular') format('svg'); */
   font-weight: 500;
   font-style: normal;
@@ -69,7 +88,8 @@ a {
   -webkit-transition: all 300ms ease;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   outline: none;
   text-decoration: none;
   transition: all 300ms ease;
@@ -104,14 +124,14 @@ aside.active {
   right: 0;
 }
 
-
-
-aside .sidebar-list, aside .profileMenu-list {
+aside .sidebar-list,
+aside .profileMenu-list {
   padding-left: 0;
   list-style: none;
 }
 
-aside .sidebar-list li a, aside .profileMenu-list li a {
+aside .sidebar-list li a,
+aside .profileMenu-list li a {
   color: #fff;
 }
 
@@ -120,7 +140,10 @@ aside .profileMenu-list li a div svg {
   margin-right: 8px;
 }
 
-aside .profileMenu-list li a:hover, aside .profileMenu-list li a.active, aside .profileMenu-list li a:hover svg, aside .profileMenu-list li a.active svg {
+aside .profileMenu-list li a:hover,
+aside .profileMenu-list li a.active,
+aside .profileMenu-list li a:hover svg,
+aside .profileMenu-list li a.active svg {
   fill: #e70d01;
   color: #e70d01;
 }
@@ -149,7 +172,8 @@ aside hr {
   list-style: none;
 }
 
-aside .sidebar-list li, .profileMenu-list li {
+aside .sidebar-list li,
+.profileMenu-list li {
   padding: 10px 0;
   position: relative;
 }
@@ -171,7 +195,10 @@ aside .sidebar-list li, .profileMenu-list li {
   margin-right: 8px;
 }
 
-.profileMenu-list li a:hover, .profileMenu-list li a.active, .profileMenu-list li a:hover svg, .profileMenu-list li a.active svg {
+.profileMenu-list li a:hover,
+.profileMenu-list li a.active,
+.profileMenu-list li a:hover svg,
+.profileMenu-list li a.active svg {
   fill: #e70d01;
   color: #e70d01;
 }
@@ -299,7 +326,11 @@ svg:focus {
   height: 100%;
   position: absolute;
   border-radius: 35px;
-  background: linear-gradient(0.35deg, #070707 -127.43%, rgba(0, 0, 0, 0) 106.03%);
+  background: linear-gradient(
+    0.35deg,
+    #070707 -127.43%,
+    rgba(0, 0, 0, 0) 106.03%
+  );
 }
 
 .slider-container .detailBox {
@@ -418,7 +449,7 @@ svg:focus {
   border: 3px solid #e70d00 !important;
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
   .img-container:hover {
     border: none;
   }
@@ -510,7 +541,16 @@ svg:focus {
   /* height: 488px; */
   height: 420px;
   position: relative;
-  background: linear-gradient(1.01deg, rgba(0, 0, 0, 0.71) 8.89%, rgba(0, 0, 0, 0) 97.25%), linear-gradient(358.63deg, rgba(0, 0, 0, 0.71) 40.97%, rgba(0, 0, 0, 0) 97.07%);
+  background: linear-gradient(
+      1.01deg,
+      rgba(0, 0, 0, 0.71) 8.89%,
+      rgba(0, 0, 0, 0) 97.25%
+    ),
+    linear-gradient(
+      358.63deg,
+      rgba(0, 0, 0, 0.71) 40.97%,
+      rgba(0, 0, 0, 0) 97.07%
+    );
   background-size: cover !important;
   background-position: 100% 20% !important;
   background-repeat: no-repeat !important;
@@ -535,7 +575,8 @@ svg:focus {
   border-right: 1.2px solid #fff;
 }
 
-.movieDetailBanner .director-listing img, .movieDetailBanner .actor-listing img {
+.movieDetailBanner .director-listing img,
+.movieDetailBanner .actor-listing img {
   height: auto;
   max-width: 60px;
   border-radius: 50%;
@@ -604,7 +645,9 @@ svg:focus {
   background: linear-gradient(150.94deg, #e70d00 17.86%, #fa5402 126.35%);
 }
 
-.dt-box.active .month, .dt-box.active .date, .dt-box.active .day {
+.dt-box.active .month,
+.dt-box.active .date,
+.dt-box.active .day {
   color: #ffffff;
 }
 
@@ -612,7 +655,9 @@ svg:focus {
   background: linear-gradient(150.94deg, #e70d00 17.86%, #fa5402 126.35%);
 }
 
-.dt-box:hover .month, .dt-box:hover .date, .dt-box:hover .day {
+.dt-box:hover .month,
+.dt-box:hover .date,
+.dt-box:hover .day {
   color: #ffffff;
 }
 
@@ -643,7 +688,8 @@ svg:focus {
   font-size: 14px;
 }
 
-.movieDetails-drop .dropdown-item:hover, .movieDetails-drop .dropdown-item:focus {
+.movieDetails-drop .dropdown-item:hover,
+.movieDetails-drop .dropdown-item:focus {
   color: #ffffff;
   background: linear-gradient(150.94deg, #e70d00 17.86%, #fa5402 126.35%);
 }
@@ -676,7 +722,8 @@ svg:focus {
   border-radius: 15px;
 }
 
-.theatre-img:hover, .theatre-img.active {
+.theatre-img:hover,
+.theatre-img.active {
   border: 4px solid red;
   border-radius: 15px;
 }
@@ -727,7 +774,8 @@ svg:focus {
   border-color: transparent;
 }
 
-.accordion-header a:hover svg circle, .accordion-header a:hover svg line {
+.accordion-header a:hover svg circle,
+.accordion-header a:hover svg line {
   stroke: white;
 }
 
@@ -749,7 +797,8 @@ svg:focus {
   border-radius: 10px;
 } */
 
-.cs-scr-ticket p, .cs-scr-ticket div p {
+.cs-scr-ticket p,
+.cs-scr-ticket div p {
   font-size: 18px;
   color: #2b2d42;
   font-weight: bold;
@@ -761,7 +810,8 @@ svg:focus {
   font-weight: bold;
 }
 
-.cs-scr-ticket small a, .cs-scr-ticket div p a {
+.cs-scr-ticket small a,
+.cs-scr-ticket div p a {
   font-size: 10px;
   font-style: italic;
   color: #25aad3;
@@ -781,7 +831,8 @@ svg:focus {
   font-weight: bold;
 }
 
-.cs-scr-ticket .rt-txt1 span, .cs-scr-ticket .rt-txt2 span {
+.cs-scr-ticket .rt-txt1 span,
+.cs-scr-ticket .rt-txt2 span {
   font-size: 10px;
   color: #000000;
   font-weight: bold;
@@ -804,11 +855,13 @@ svg:focus {
   margin-left: 5px;
 }
 
-.cs-scr-ticket .movie-tickDetails li:last-child::after, .cs-scr-ticket .seatList li:last-child::after {
+.cs-scr-ticket .movie-tickDetails li:last-child::after,
+.cs-scr-ticket .seatList li:last-child::after {
   content: "";
 }
 
-.cs-scr-ticket .dateTime li, .cs-scr-ticket .seatList li {
+.cs-scr-ticket .dateTime li,
+.cs-scr-ticket .seatList li {
   font-size: 18px;
   color: #2b2d42;
   font-weight: bold;
@@ -830,7 +883,11 @@ svg:focus {
   height: 45px;
 }
 
-.promoCode-box input::-webkit-input-placeholder, .promoCode-box input:-moz-placeholder, .promoCode-box input:-ms-input-placeholder, .promoCode-box input:-moz-placeholder, .promoCode-box input::placeholder {
+.promoCode-box input::-webkit-input-placeholder,
+.promoCode-box input:-moz-placeholder,
+.promoCode-box input:-ms-input-placeholder,
+.promoCode-box input:-moz-placeholder,
+.promoCode-box input::placeholder {
   font-size: 10px;
   color: #8d99af;
 }
@@ -927,7 +984,8 @@ svg:focus {
 
 /* DATE & TIME (TIME BOX) */
 
-.m-format, .m-format-new {
+.m-format,
+.m-format-new {
   display: table-cell;
   margin-right: 10px;
 }
@@ -992,7 +1050,9 @@ svg:focus {
   padding-left: 0px;
 }
 
-.timing-box .timing-box-list li, .movie-info-table-2 .timing-box, .movie-info-table .timing-box {
+.timing-box .timing-box-list li,
+.movie-info-table-2 .timing-box,
+.movie-info-table .timing-box {
   color: #000000;
   font-size: 14px;
   cursor: pointer;
@@ -1009,7 +1069,10 @@ svg:focus {
   margin-bottom: 0;
 }
 
-.timing-box .timing-box-list li.active, .movie-info-table .timing-box.active, .movie-info-table .timing-box:hover, .timing-box .timing-box-list li:hover {
+.timing-box .timing-box-list li.active,
+.movie-info-table .timing-box.active,
+.movie-info-table .timing-box:hover,
+.timing-box .timing-box-list li:hover {
   background: linear-gradient(164.78deg, #e70d00 17.86%, #fa5402 126.35%);
   color: #fff;
 }
@@ -1090,8 +1153,6 @@ svg:focus {
 /* MOVIE DETAILS STORYLINE SECTION END*/
 
 /* SCREENING TYPE */
-
-
 
 .screen-type .st-title {
   font-size: 18px;
@@ -1302,7 +1363,8 @@ svg:focus {
   border: 1px solid rgba(141, 153, 174, 0.5);
 }
 
-.pick-seats li:hover, .pick-seats li.active {
+.pick-seats li:hover,
+.pick-seats li.active {
   background-color: #e70d01;
   color: #fff;
 }
@@ -1312,7 +1374,8 @@ svg:focus {
   user-select: none;
 }
 
-.seat-layout .seat, .seat-layout .wheel {
+.seat-layout .seat,
+.seat-layout .wheel {
   width: 22px;
   height: 22px;
   cursor: pointer;
@@ -1325,7 +1388,6 @@ svg:focus {
 .seat-layout table::after {
   content: "";
 }
-
 
 .seat-info li {
   padding: 0px 15px;
@@ -1660,7 +1722,8 @@ svg:focus {
   margin-bottom: 0px;
 }
 
-.secondBox .tAmount, .secondBox .seatList li {
+.secondBox .tAmount,
+.secondBox .seatList li {
   font-size: 14px;
   line-height: 18px;
   color: #2b2d42;
@@ -1949,7 +2012,8 @@ svg:focus {
   font-weight: bold;
 }
 
-input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -2137,7 +2201,8 @@ input[type="number"] {
   box-shadow: none;
 }
 
-.country-code-drop .dropdown-item:hover, .country-code-drop .dropdown-item:focus {
+.country-code-drop .dropdown-item:hover,
+.country-code-drop .dropdown-item:focus {
   color: #fff;
   text-decoration: none;
   background-color: #e70d00;
@@ -2341,7 +2406,10 @@ input[type="number"] {
   margin-right: 8px;
 }
 
-.accDrop .profileMenu-list li:hover a, .accDrop .profileMenu-list li.active a, .accDrop .profileMenu-list li:hover a svg, .accDrop .profileMenu-list li.active a svg {
+.accDrop .profileMenu-list li:hover a,
+.accDrop .profileMenu-list li.active a,
+.accDrop .profileMenu-list li:hover a svg,
+.accDrop .profileMenu-list li.active a svg {
   fill: #fff;
   color: #fff;
 }
@@ -2574,7 +2642,8 @@ input[type="number"] {
   text-decoration: underline;
 }
 
-.tnc-class:hover, .tnc-class:focus {
+.tnc-class:hover,
+.tnc-class:focus {
   color: #8d99ad;
   text-decoration: underline;
 }
@@ -2676,7 +2745,8 @@ input[type="number"] {
   background-color: #fff;
 }
 
-.bs-tooltip-auto[x-placement^="right"] .arrow:before, .bs-tooltip-right .arrow:before {
+.bs-tooltip-auto[x-placement^="right"] .arrow:before,
+.bs-tooltip-right .arrow:before {
   right: 0;
   border-right-color: #fff;
   border-width: 0.4rem 0.4rem 0.4rem 0;
@@ -2826,7 +2896,8 @@ input[type="number"] {
   font-size: 16px;
 }
 
-.selected-date, .selected-time {
+.selected-date,
+.selected-time {
   font-size: 30px;
   font-weight: 900;
   line-height: 1;
@@ -2948,7 +3019,8 @@ input[type="number"] {
   line-height: 10px;
 }
 
-.unconfirmed, .cancelled {
+.unconfirmed,
+.cancelled {
   position: relative;
 }
 
@@ -2956,7 +3028,8 @@ input[type="number"] {
   display: none;
 }
 
-.unconfirmed .tag, .cancelled .tag {
+.unconfirmed .tag,
+.cancelled .tag {
   left: 50%;
   top: 50%;
   height: 25px;
@@ -2984,7 +3057,8 @@ input[type="number"] {
   background-color: #e70d01;
 }
 
-.unconfirmed .qr-code, .cancelled .qr-code {
+.unconfirmed .qr-code,
+.cancelled .qr-code {
   opacity: 0.1;
   user-select: none;
 }
@@ -3237,8 +3311,6 @@ input[type="number"] {
   background-color: #e70d00;
 }
 
-
-
 .tool-tip-cop .tooltip-inner {
   font-weight: normal;
   background: #000;
@@ -3356,7 +3428,7 @@ input[type="number"] {
 header .btn-transparent {
   font-size: 16px;
   padding-left: 3px;
-  color: #FFF !important;
+  color: #fff !important;
 }
 
 .countrySelectionDropdown a {
@@ -3382,7 +3454,8 @@ header .btn-transparent {
   background-color: #e70d00;
 }
 
-.dropdown-menu, header .btn-transparent:focus {
+.dropdown-menu,
+header .btn-transparent:focus {
   box-shadow: none !important;
   outline: none !important;
 }
@@ -3410,7 +3483,7 @@ header .btn-transparent {
 }
 
 .slick-track {
-  margin-left: 0
+  margin-left: 0;
 }
 
 .movie-info-table {
@@ -3426,7 +3499,9 @@ header .btn-transparent {
   padding: 10px 2px;
 }
 
-.movie-info-table td:nth-child(1), .movie-info-table td:nth-child(3), .movie-info-table td:nth-child(4) {
+.movie-info-table td:nth-child(1),
+.movie-info-table td:nth-child(3),
+.movie-info-table td:nth-child(4) {
   width: 20%;
 }
 
@@ -3434,7 +3509,7 @@ header .btn-transparent {
   width: 40%;
 }
 
-@media(max-width:576px) {
+@media (max-width: 576px) {
   .movie-info-table .timing-box {
     font-size: 11px;
     padding: 9px 8px;
@@ -3445,10 +3520,12 @@ header .btn-transparent {
   .movie-info-table td:nth-child(2) {
     width: 40%;
   }
-  .movie-info-table td:nth-child(3), .movie-info-table td:nth-child(4) {
+  .movie-info-table td:nth-child(3),
+  .movie-info-table td:nth-child(4) {
     width: 20%;
   }
-  .movie-info-table-2, .movie-info-table-2 .timing-box {
+  .movie-info-table-2,
+  .movie-info-table-2 .timing-box {
     font-size: 11px;
   }
   .movie-info-table-2 .timing-box {
@@ -3503,7 +3580,7 @@ header .btn-transparent {
   left: 0;
 }
 
-.movie-information>* {
+.movie-information > * {
   z-index: 11;
   position: relative;
 }
@@ -3538,14 +3615,14 @@ header .btn-transparent {
   border-bottom: 1px solid #d3d3d3;
 }
 
-.show-time-listing>li {
+.show-time-listing > li {
   padding: 8px 5px;
   min-width: 100px;
   text-align: center;
   display: inline-block;
 }
 
-.show-time-listing>li.active::after {
+.show-time-listing > li.active::after {
   content: "";
   width: 100%;
   bottom: -8px;
@@ -3563,12 +3640,12 @@ header .btn-transparent {
   list-style: none;
 }
 
-.movie-listing-mobile>li {
+.movie-listing-mobile > li {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.movie-listing-mobile>li:not(:last-child) {
+.movie-listing-mobile > li:not(:last-child) {
   border-bottom: 1px solid #d3d3d3;
 }
 
@@ -3602,7 +3679,8 @@ header .btn-transparent {
   border: 2px solid #d3d3d3;
 }
 
-.organisation-features, .orginistion-recent-scheduling {
+.organisation-features,
+.orginistion-recent-scheduling {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -3611,13 +3689,13 @@ header .btn-transparent {
   flex-wrap: wrap;
 }
 
-.orginistion-recent-scheduling>li {
+.orginistion-recent-scheduling > li {
   padding-left: 5px;
   padding-right: 5px;
   margin-bottom: 3px;
 }
 
-.orginistion-recent-scheduling>li:not(:last-child):after {
+.orginistion-recent-scheduling > li:not(:last-child):after {
   content: "|";
   top: -1px;
   right: -5px;
@@ -3625,7 +3703,7 @@ header .btn-transparent {
   position: relative;
 }
 
-.orginistion-recent-scheduling>li:first-child:after {
+.orginistion-recent-scheduling > li:first-child:after {
   content: ":";
 }
 
@@ -3662,7 +3740,7 @@ header .btn-transparent {
 
 .movie-listing-mobile li {
   padding: 5px;
-  cursor: pointer
+  cursor: pointer;
 }
 
 /* ************ */
@@ -3678,7 +3756,6 @@ header .btn-transparent {
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-
 
 .nav-wrap.filter-nav-wrap.mobileView {
   position: fixed;
@@ -3736,7 +3813,7 @@ header .btn-transparent {
 }
 
 p {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.1em;
   font-weight: 300;
   line-height: 1.7em;
@@ -3781,11 +3858,10 @@ a:focus {
   display: flex;
   width: 100%;
   align-items: stretch;
-  background:url("../img/background.jpg");
+  background: url("../img/1567832.jpg");
   position: relative;
-
 }
-.background-blurr{
+.background-blurr {
   z-index: 99;
   width: 100%;
   height: 100%;
@@ -3810,7 +3886,7 @@ a:focus {
 
 #sidebar.active {
   margin-right: 0px;
-  z-index: 999
+  z-index: 999;
 }
 
 #sidebar .sidebar-header {
@@ -3819,7 +3895,6 @@ a:focus {
   display: flex;
   justify-content: space-between;
   padding: 11px;
-
 }
 
 #sidebar ul.components {
@@ -3839,11 +3914,11 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-  color: #7386D5;
+  color: #7386d5;
   background: #fff;
 }
 
-#sidebar ul li.active>a,
+#sidebar ul li.active > a,
 a[aria-expanded="true"] {
   color: #fff;
   background: #6d7fcc;
@@ -3881,7 +3956,7 @@ ul.CTAs a {
 
 a.download {
   background: #fff;
-  color: #7386D5;
+  color: #7386d5;
 }
 
 a.article,
@@ -3905,27 +3980,27 @@ a.article:hover {
   MEDIAQUERIES
 ----------------------------------------------------- */
 #sidebar {
-      margin-right: -400px;
-  }
-  .order-last {
+  margin-right: -400px;
+}
+.order-last {
   -webkit-box-ordinal-group: 14;
   -ms-flex-order: 13;
   order: 13;
 }
 @media (max-width: 768px) {
   #sidebar {
-      margin-right: -400px;
+    margin-right: -400px;
   }
-  
+
   #sidebar.active {
-      margin-right: 0;
+    margin-right: 0;
   }
   #sidebarCollapse span {
-      display: none;
+    display: none;
   }
 }
 
-.Family-tree{
+.Family-tree {
   background-size: 100% auto;
 }
 
@@ -3948,8 +4023,6 @@ a.article:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-
 
 /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
 	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
