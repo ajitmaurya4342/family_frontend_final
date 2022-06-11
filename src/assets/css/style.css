@@ -1,5 +1,8 @@
 @charset "utf-8";
+/* @import url("https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap"); */
 /* CSS Document */
+@import url("https://fonts.googleapis.com/css2?family=Allura");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
 @font-face {
   font-family: "Bw Modelica SS01";
@@ -74,9 +77,9 @@
 }
 
 body {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
-  font-family: "Bw Modelica";
+  font-family: "Playfair Display", serif;
 }
 
 a {
@@ -122,6 +125,7 @@ aside {
 
 aside.active {
   right: 0;
+  transition: 0.4s ease-in-out;
 }
 
 aside .sidebar-list,
@@ -163,7 +167,8 @@ aside hr {
   position: sticky;
   top: 90px;
   padding-top: 50px;
-  height: calc(100vh - 87px);
+  /* height: calc(100vh - 87px); */
+  height: 100vh;
   background-color: #edf2f5;
 }
 
@@ -3829,12 +3834,16 @@ a:focus {
 }
 
 .navbar {
-  padding: 15px 10px;
-  background: #fff;
-  border: none;
+  /* padding: 15px 10px; */
+  height: 90px;
+  background-image: url("../img/border_texture.jpg") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  /* background: #fff; */
+  /* border: none;
   border-radius: 0;
   margin-bottom: 40px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); */
 }
 
 .navbar-btn {
@@ -3853,12 +3862,112 @@ a:focus {
 /* ---------------------------------------------------
   SIDEBAR STYLE
 ----------------------------------------------------- */
+.title-texxxt {
+  font-weight: 800 !important;
+}
+.title-texxxt-val {
+  font-weight: 500 !important;
+}
+.content-details {
+  color: #2b3d4e;
+  padding: 10px;
+  letter-spacing: 2px;
+  /* height: 100%; */
+}
+.update_btn {
+  /* border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px; */
+  letter-spacing: 2px;
 
+  border: 2px solid transparent;
+  font-weight: 900 !important;
+  font-size: 25px;
+  background-color: #1c2c39;
+  transition: 0.5s;
+  color: #cfccd1;
+  border-radius: 10px;
+  padding: 5px 8px !important;
+}
+.update_btn i {
+  font-size: 20px;
+  width: 10px !important;
+  height: 10px !important;
+}
+.update_icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+.update_btn:hover {
+  border: 2px solid #1c2c39;
+  background-color: transparent;
+  color: #1c2c39;
+}
+.update_btn:hover .update_icon {
+  transform: rotate(-90deg);
+  transition: 0.5s;
+}
+.sub_container_profile {
+  height: 100% !important;
+}
+.show_profile_class {
+  background: url("../img/texture_img.jpg");
+  background-repeat: repeat !important;
+  height: 100% !important;
+}
+.user_profile_info {
+  background: url("../img/border_texture.jpg") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+.family_header {
+  background: -webkit-linear-gradient(
+    260deg,
+    rgba(153, 153, 153, 1) 33%,
+    rgba(255, 255, 255, 1) 44%,
+    rgba(218, 218, 218, 1) 29%
+  );
+  font-weight: 900 !important;
+  font-family: "Allura", cursive;
+  /* font-family: "Monsieur La Doulaise", cursive; */
+  font-size: 50px !important;
+  /* letter-spacing: 10px !important; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.line_bg_gradient-1 {
+}
+.line_bg_gradient,
+.line_bg_gradient-1 {
+  background: -webkit-linear-gradient(
+    260deg,
+    rgba(153, 153, 153, 1) 33%,
+    rgba(255, 255, 255, 1) 44%,
+    rgba(218, 218, 218, 1) 29%
+  );
+  height: 3px;
+  /* height: auto; */
+}
+.profile_text {
+  background: -webkit-linear-gradient(
+    317deg,
+    rgba(153, 153, 153, 1) 33%,
+    rgba(255, 255, 255, 1) 44%,
+    rgba(218, 218, 218, 1) 29%
+  );
+  font-weight: 900 !important;
+  font-family: "Allura", cursive;
+  /* font-family: "Monsieur La Doulaise", cursive; */
+  font-size: 50px !important;
+  /* letter-spacing: 10px !important; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .wrapper {
   display: flex;
   width: 100%;
   align-items: stretch;
-  background: url("../img/1567832.jpg");
+  background: url("../img/texture_img.jpg");
   position: relative;
 }
 .background-blurr {
@@ -3868,6 +3977,7 @@ a:focus {
   position: absolute;
   background: #000;
   opacity: 0.8;
+  transition: 0.8s;
 }
 .order-last {
   -webkit-box-ordinal-group: 14;
@@ -3881,7 +3991,8 @@ a:focus {
   background: #fff;
   color: #000;
   font-weight: bold;
-  transition: all 0.3s;
+  position: relative;
+  transition: 0.3s;
 }
 
 #sidebar.active {
@@ -3971,7 +4082,7 @@ a.article:hover {
 
 #content {
   width: 100%;
-  padding: 20px;
+  /* padding: 20px; */
   min-height: 100vh;
   transition: all 0.3s;
 }
@@ -3980,7 +4091,7 @@ a.article:hover {
   MEDIAQUERIES
 ----------------------------------------------------- */
 #sidebar {
-  margin-right: -400px;
+  margin-right: 400px;
 }
 .order-last {
   -webkit-box-ordinal-group: 14;
@@ -3988,7 +4099,11 @@ a.article:hover {
   order: 13;
 }
 @media (max-width: 768px) {
+  .line_bg_gradient {
+    margin-bottom: 2px;
+  }
   #sidebar {
+    min-width: 100%;
     margin-right: -400px;
   }
 
