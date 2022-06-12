@@ -8,15 +8,24 @@
         :class="showToglebar ? 'active' : 'order-last'"
         v-if="showToglebar"
       >
-        <div class="sidebar-header" v-if="!showProfile">
+        <div
+          class="sidebar-header justify-content-center position-relative"
+          v-if="!showProfile"
+        >
           <h5>{{ editProfile ? "Update User Detail" : "Add New User" }}</h5>
-          <h5 class="close-header" @click="showToglebarttt">x</h5>
+          <h5 class="close-header" @click="showToglebarttt">
+            <img
+              src="../../assets/img/Close-298.png"
+              alt="Close"
+              class="close_icon_header"
+            />
+          </h5>
         </div>
 
-        <b-container class="my-4" v-if="!showProfile">
+        <b-container class="my-4 sidebar_main_container" v-if="!showProfile">
           <b-row class="my-2" v-if="storeParentDetail">
             <b-col sm="12">
-              <label style="color: green; font-size: 14px"
+              <label class="label_header"
                 >Creating Son of
                 {{ storeParentDetail.parent_detail.first_name }}
                 {{ storeParentDetail.parent_detail.last_name }}</label
@@ -26,7 +35,7 @@
 
           <b-row class="my-2" v-if="!is_son_or_daughter">
             <b-col sm="12">
-              <label style="color: green; font-size: 14px">
+              <label class="label_header">
                 {{ userForm.gender == "Female" ? "Wife Of " : "Husband Of" }}
                 {{ userDetail.relation_of }}</label
               >
@@ -35,6 +44,7 @@
           <b-row class="my-2">
             <b-col sm="12">
               <b-form-input
+                class="custom_input_class"
                 placeholder="Enter Your First Name"
                 v-model="userForm.first_name"
               ></b-form-input>
@@ -44,6 +54,7 @@
           <b-row class="my-2">
             <b-col sm="12">
               <b-form-input
+                class="custom_input_class"
                 placeholder="Enter Your Last Name"
                 v-model="userForm.last_name"
               ></b-form-input>
@@ -90,6 +101,7 @@
           <b-row class="my-2">
             <b-col sm="12">
               <b-form-input
+                class="custom_input_class"
                 placeholder="Enter Your Email"
                 type="email"
                 v-model="userForm.email"
@@ -100,6 +112,7 @@
           <b-row class="my-2">
             <b-col sm="12">
               <b-form-input
+                class="custom_input_class"
                 placeholder="Enter Your Phone"
                 type="number"
                 v-model="userForm.phone_number"
@@ -112,7 +125,11 @@
               <label class="title-input">Date of Birth</label>
             </b-col>
             <b-col sm="12">
-              <b-form-input type="date" v-model="userForm.dob"></b-form-input>
+              <b-form-input
+                type="date"
+                class="custom_input_class"
+                v-model="userForm.dob"
+              ></b-form-input>
             </b-col>
           </b-row>
 
@@ -121,18 +138,24 @@
               <label class="title-input">Date of Death</label>
             </b-col>
             <b-col sm="12">
-              <b-form-input type="date" v-model="userForm.dod"></b-form-input>
+              <b-form-input
+                class="custom_input_class"
+                type="date"
+                v-model="userForm.dod"
+              ></b-form-input>
             </b-col>
           </b-row>
 
           <b-row class="my-2">
             <b-col sm="8">
-              <b-form-file
-                v-model="userForm.picture"
-                v-on:change="uploadProfile($event.target)"
-                accept="image/png, image/gif, image/jpeg"
-                placeholder="Upload Your Profile"
-              ></b-form-file>
+              <div class="custom_input_class">
+                <b-form-file
+                  v-model="userForm.picture"
+                  v-on:change="uploadProfile($event.target)"
+                  accept="image/png, image/gif, image/jpeg"
+                  placeholder="Upload Your Profile"
+                ></b-form-file>
+              </div>
             </b-col>
             <b-col sm="4" v-if="userForm.picture">
               <img
@@ -148,7 +171,10 @@
               <label class="title-input">About You</label>
             </b-col>
             <b-col sm="12">
-              <b-form-textarea v-model="userForm.description"></b-form-textarea>
+              <b-form-textarea
+                class="custom_input_class"
+                v-model="userForm.description"
+              ></b-form-textarea>
             </b-col>
           </b-row>
 
@@ -156,12 +182,12 @@
             <b-col sm="12" class="text-center">
               <button
                 type="button"
-                class="btn btn-info"
+                class="btn save_btn"
                 @click="saveUser"
                 :disabled="isSaveButtonEnable"
               >
-                <i class="fas fa-align-left"></i>
-                <span>Save</span>
+                <img src="../../assets/img/Save.png" alt="" class="save_icon" />
+                Save
               </button>
             </b-col>
           </b-row>
@@ -175,7 +201,11 @@
                     class="close-header profile-close"
                     @click="showToglebarttt"
                   >
-                    x
+                    <img
+                      src="../../assets/img/Close-298.png"
+                      alt="Close"
+                      class="close_icon_header"
+                    />
                   </h5>
                   <div class="row m-l-0 m-r-0">
                     <div
@@ -264,11 +294,11 @@
                       @click="toEditProfile"
                     >
                       <img
-                        src="../../assets/img/2298367_audio_doodle_loop_refresh_refreshing_icon.png"
+                        src="../../assets/img/Data-Edit-148.png"
                         alt=""
                         class="update_icon"
                       />
-                      Update
+                      Edit
                     </button>
                   </b-col>
                 </b-row>
@@ -763,7 +793,7 @@ export default {
   height: 27px;
   width: 27px;
   border-radius: 27px;
-  background-color: #000000 !important;
+  /* background-color: #000000 !important; */
   color: #fff;
   text-align: center;
   font-weight: bold;

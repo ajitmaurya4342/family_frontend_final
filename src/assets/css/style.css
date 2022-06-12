@@ -80,6 +80,7 @@ body {
   font-size: 20px;
   font-weight: 500;
   font-family: "Playfair Display", serif;
+  overflow: scroll;
 }
 
 a {
@@ -3874,12 +3875,25 @@ a:focus {
   letter-spacing: 2px;
   /* height: 100%; */
 }
-.update_btn {
+.custom_input_class {
+  border: 2px solid #1c2c39;
+  border-radius: 5px;
+}
+.form-control:focus {
+  border: 2px solid #1c2c39;
+  box-shadow: 0 0 0 0.2rem rgb(28 44 57/60%);
+}
+/* .custom_input_class .custom-file-label {
+  border: 2px solid #1c2c39 !important;
+  border-radius: 10px !important;
+} */
+.update_btn,
+.save_btn {
   /* border: 10px solid;
   border-image-slice: 1;
   border-width: 5px; */
   letter-spacing: 2px;
-
+  margin: auto;
   border: 2px solid transparent;
   font-weight: 900 !important;
   font-size: 25px;
@@ -3894,17 +3908,20 @@ a:focus {
   width: 10px !important;
   height: 10px !important;
 }
-.update_icon {
+.update_icon,
+.save_icon {
   width: 20px !important;
   height: 20px !important;
 }
-.update_btn:hover {
+.update_btn:hover,
+.save_btn:hover {
   border: 2px solid #1c2c39;
   background-color: transparent;
   color: #1c2c39;
 }
-.update_btn:hover .update_icon {
-  transform: rotate(-90deg);
+.update_btn:hover .update_icon,
+.save_btn:hover .save_icon {
+  transform: scaleY(1.5);
   transition: 0.5s;
 }
 .sub_container_profile {
@@ -3963,13 +3980,30 @@ a:focus {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.label_header {
+  background: -webkit-linear-gradient(
+    250deg,
+    rgba(28, 44, 57, 1) 8%,
+    rgba(66, 98, 124, 1) 48%,
+    rgba(45, 70, 91, 1) 83%
+  );
+  font-weight: 900 !important;
+  font-family: "Allura", cursive;
+  /* font-family: "Monsieur La Doulaise", cursive; */
+  font-size: 30px !important;
+  /* letter-spacing: 10px !important; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .wrapper {
   display: flex;
   width: 100%;
+  /* height: 100%; */
   align-items: stretch;
   background: url("../img/texture_img.jpg");
   position: relative;
 }
+
 .background-blurr {
   z-index: 99;
   width: 100%;
@@ -3984,28 +4018,66 @@ a:focus {
   /* -ms-flex-order: 13; */
   order: 13;
 }
+.sidebar-header .close-header {
+  position: absolute;
+  top: 1%;
+  right: 2%;
+}
+.close_icon_header {
+  height: 15px;
+  width: 15px;
+}
 
+.close_icon_header:hover {
+  /* transform: rotate(90deg);
+  transition: 0.8s; */
+  animation: close_anime 0.8s;
+}
 #sidebar {
+  position: absolute !important;
+  right: -50% !important;
+  top: 0 !important;
+  transform: translate(0%, 0%) !important;
+  height: 100%;
   min-width: 400px;
   max-width: 400px;
   background: #fff;
   color: #000;
   font-weight: bold;
-  position: relative;
-  transition: 0.3s;
+  transition: 0.8s !important;
+  background: url("../img/texture_img.jpg");
 }
 
 #sidebar.active {
   margin-right: 0px;
+  right: 0% !important;
+  transition: right 0.8s !important;
   z-index: 999;
 }
 
 #sidebar .sidebar-header {
   padding: 15px;
-  background: #6d7fcc;
+  background: url("../img/border_texture.jpg") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
   display: flex;
   justify-content: space-between;
   padding: 11px;
+}
+#sidebar .sidebar-header h5 {
+  background: -webkit-linear-gradient(
+    317deg,
+    rgba(153, 153, 153, 1) 33%,
+    rgba(255, 255, 255, 1) 44%,
+    rgba(218, 218, 218, 1) 29%
+  );
+  font-weight: 900 !important;
+  /* font-family: "Allura", cursive; */
+  /* font-family: "Monsieur La Doulaise", cursive; */
+  font-size: 25px !important;
+  /* letter-spacing: 10px !important; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #sidebar ul.components {
@@ -4099,6 +4171,9 @@ a.article:hover {
   order: 13;
 }
 @media (max-width: 768px) {
+  .sidebar_main_container {
+    background: url("../img/texture_img.jpg");
+  }
   .line_bg_gradient {
     margin-bottom: 2px;
   }
@@ -4137,6 +4212,17 @@ a.article:hover {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+@keyframes close_anime {
+  0% {
+    transform: rotate(20deg);
+  }
+  40% {
+    transform: rotate(90deg);
+  }
+  /* 100% {
+    transform: rotate(90deg);
+  } */
 }
 
 /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
