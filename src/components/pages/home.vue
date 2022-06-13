@@ -78,7 +78,7 @@
               </b-col>
             </b-row>
 
-            <b-row class="my-2">
+            <b-row class="">
               <b-col sm="12">
                 <b-form-group
                   label="Are you Married?"
@@ -805,9 +805,9 @@ export default {
 }
 
 .img-responsive {
-  height: 100px;
-  width: 100px;
-  border-radius: 100px;
+  height: 90px;
+  width: 90px;
+  border-radius: 90px;
   object-fit: fill;
   background: black;
 }
