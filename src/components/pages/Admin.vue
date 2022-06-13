@@ -254,7 +254,7 @@
                     <div class="title-texxxt-val">
                       {{
                         userForm.dob
-                          ? moment(userForm.dob).format("DDD,MMM YYYY")
+                          ? moment(userForm.dob).format("DD,MMM YYYY")
                           : "Not Mentioned"
                       }}
                     </div>
@@ -266,7 +266,7 @@
                     <div class="title-texxxt-val">
                       {{
                         userForm.dod
-                          ? moment(userForm.dod).format("DDD,MMM YYYY")
+                          ? moment(userForm.dod).format("DD,MMM YYYY")
                           : "Not Mentioned"
                       }}
                     </div>
@@ -641,7 +641,7 @@ export default {
             let obj = {
               firstPerson: {
                 name: "Add New Child",
-                image: `${URL_BASE}/plus-image.jpg`,
+                image: `${URL_BASE}/plus-image.png`,
                 parent_detail: {
                   ...z
                 }
@@ -655,7 +655,7 @@ export default {
             let obj = {
               firstPerson: {
                 name: "Add New Child",
-                image: `${URL_BASE}/plus-image.jpg`,
+                image: `${URL_BASE}/plus-image.png`,
                 parent_detail: {
                   ...z
                 }
