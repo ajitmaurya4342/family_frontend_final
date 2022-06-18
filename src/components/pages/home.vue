@@ -47,6 +47,7 @@
                 class="custom_input_class"
                 placeholder="Enter Your First Name"
                 v-model="userForm.first_name"
+                @click="clickSound"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -57,6 +58,7 @@
                 class="custom_input_class"
                 placeholder="Enter Your Last Name"
                 v-model="userForm.last_name"
+                @click="clickSound"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -105,6 +107,7 @@
                 placeholder="Enter Your Email"
                 type="email"
                 v-model="userForm.email"
+                @click="clickSound"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -115,6 +118,7 @@
                 class="custom_input_class"
                 placeholder="Enter Your Phone"
                 type="number"
+                @click="clickSound"
                 v-model="userForm.phone_number"
               ></b-form-input>
             </b-col>
@@ -128,6 +132,7 @@
               <b-form-input
                 type="date"
                 class="custom_input_class"
+                @click="clickSound"
                 v-model="userForm.dob"
               ></b-form-input>
             </b-col>
@@ -141,6 +146,7 @@
               <b-form-input
                 class="custom_input_class"
                 type="date"
+                @click="clickSound"
                 v-model="userForm.dod"
               ></b-form-input>
             </b-col>
@@ -154,6 +160,7 @@
                   v-on:change="uploadProfile($event.target)"
                   accept="image/png, image/gif, image/jpeg"
                   placeholder="Upload Your Profile"
+                  @click="clickSound"
                 ></b-form-file>
               </div>
             </b-col>
@@ -205,6 +212,7 @@
                       src="../../assets/img/Close-298.png"
                       alt="Close"
                       class="close_icon_header"
+                      @click="clickSound"
                     />
                   </h5>
                   <div class="row m-l-0 m-r-0">
@@ -315,7 +323,7 @@
         >
           <div class="text-center">
             <div class="family_header">
-              <span>Shroff Family</span>
+              <span>Shroff Family Tree</span>
               <div class="line_bg_gradient mb-md-1"></div>
               <div class="line_bg_gradient d-none d-md-block mb-md-2"></div>
             </div>
@@ -433,7 +441,8 @@ export default {
       baseUrl: URL_BASE,
       userlevel: 0,
       is_admin_page: false,
-      showProfile: false
+      showProfile: false,
+      audioMute: true
     };
   },
   mounted() {},
@@ -472,10 +481,27 @@ export default {
     this.is_admin_page = window.location.pathname.includes("dmin");
     console.log(this.is_admin_page);
     this.resetList();
+    this.playSound();
+  },
+  watch: {
+    audioMute(val) {
+      console.log(val, "vall");
+      this.audioMute = val;
+      this.audioMute ? this.sound.pause() : this.sound.play();
+    }
   },
   methods: {
     moment,
-
+    playSound() {
+      this.sound = new Audio(
+        "https://cdn.pixabay.com/audio/2022/05/05/audio_1395e7800f.mp3"
+      );
+      // sound.muted = this.audioMute;
+      this.audioMute ? this.sound.pause() : this.sound.play();
+      this.sound.autoplay = true;
+      // sound.play();
+      this.sound.loop = true;
+    },
     resetList() {
       this.getHeirachy();
       this.showToglebarttt();
@@ -604,6 +630,7 @@ export default {
         });
     },
     showToglebarttt(item) {
+      this.audioMute = !this.audioMute;
       if (item && item.hasOwnProperty("parent_detail")) {
         window.scrollTo(200, 0);
         this.storeParentDetail = item;

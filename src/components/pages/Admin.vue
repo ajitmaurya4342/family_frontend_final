@@ -1,6 +1,10 @@
 <template>
   <div>
     <div class="wrapper">
+      <audio
+        src="https://cdn.pixabay.com/audio/2022/05/05/audio_1395e7800f.mp3"
+        ref="$my_audio"
+      ></audio>
       <div :class="showToglebar ? 'background-blurr' : ''"></div>
       <!-- Sidebar  -->
       <nav
@@ -47,6 +51,7 @@
                 class="custom_input_class"
                 placeholder="Enter Your First Name"
                 v-model="userForm.first_name"
+                @click="clickSound()"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -57,6 +62,7 @@
                 class="custom_input_class"
                 placeholder="Enter Your Last Name"
                 v-model="userForm.last_name"
+                @click="clickSound()"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -68,11 +74,16 @@
                   <b-form-radio-group
                     id="radio-group-2"
                     v-model="userForm.gender"
+                    @click="clickSound()"
                     :aria-describedby="ariaDescribedby"
                     name="gender"
                   >
-                    <b-form-radio value="Male">Male</b-form-radio>
-                    <b-form-radio value="Female">Female</b-form-radio>
+                    <b-form-radio value="Male" @click="clickSound()"
+                      >Male</b-form-radio
+                    >
+                    <b-form-radio value="Female" @click="clickSound()"
+                      >Female</b-form-radio
+                    >
                   </b-form-radio-group>
                 </b-form-group>
               </b-col>
@@ -89,9 +100,14 @@
                     v-model="userForm.is_married"
                     :aria-describedby="ariaDescribedby"
                     name="married_status"
+                    @click="clickSound()"
                   >
-                    <b-form-radio value="Y">Yes</b-form-radio>
-                    <b-form-radio value="N">No</b-form-radio>
+                    <b-form-radio value="Y" @click="clickSound()"
+                      >Yes</b-form-radio
+                    >
+                    <b-form-radio value="N" @click="clickSound()"
+                      >No</b-form-radio
+                    >
                   </b-form-radio-group>
                 </b-form-group>
               </b-col>
@@ -104,6 +120,7 @@
                 placeholder="Enter Your Email"
                 type="email"
                 class="custom_input_class"
+                @click="clickSound()"
                 v-model="userForm.email"
               ></b-form-input>
             </b-col>
@@ -115,6 +132,7 @@
                 class="custom_input_class"
                 placeholder="Enter Your Phone"
                 type="number"
+                @click="clickSound()"
                 v-model="userForm.phone_number"
               ></b-form-input>
             </b-col>
@@ -127,6 +145,7 @@
             <b-col sm="12">
               <b-form-input
                 type="date"
+                @click="clickSound()"
                 class="custom_input_class"
                 v-model="userForm.dob"
               ></b-form-input>
@@ -140,6 +159,7 @@
             <b-col sm="12">
               <b-form-input
                 type="date"
+                @click="clickSound()"
                 class="custom_input_class"
                 v-model="userForm.dod"
               ></b-form-input>
@@ -151,6 +171,7 @@
               <div class="custom_input_class">
                 <b-form-file
                   v-model="userForm.picture"
+                  @click="clickSound()"
                   v-on:change="uploadProfile($event.target)"
                   accept="image/png, image/gif, image/jpeg"
                   placeholder="Upload Your Profile"
@@ -173,6 +194,7 @@
             <b-col sm="12">
               <b-form-textarea
                 class="custom_input_class"
+                @click="clickSound()"
                 v-model="userForm.description"
               ></b-form-textarea>
             </b-col>
@@ -205,6 +227,7 @@
                       src="../../assets/img/Close-298.png"
                       alt="Close"
                       class="close_icon_header"
+                      @click="clickSound()"
                     />
                   </h5>
                   <div class="row m-l-0 m-r-0">
@@ -309,7 +332,7 @@
         >
           <div class="text-center">
             <div class="family_header">
-              <span>Shroff Family</span>
+              <span>Shroff Family Tree</span>
               <div class="line_bg_gradient mb-md-1"></div>
               <div class="line_bg_gradient d-none d-md-block mb-md-2"></div>
             </div>
@@ -427,7 +450,8 @@ export default {
       baseUrl: URL_BASE,
       userlevel: 0,
       is_admin_page: false,
-      showProfile: false
+      showProfile: false,
+      audioMute: true
     };
   },
   mounted() {},
@@ -466,16 +490,37 @@ export default {
     this.is_admin_page = window.location.pathname.includes("dmin");
     console.log(this.is_admin_page);
     this.resetList();
+    this.playSound();
+  },
+  watch: {
+    audioMute(val) {
+      console.log(val, "vall");
+      this.audioMute = val;
+      this.audioMute ? this.sound.pause() : this.sound.play();
+    }
   },
   methods: {
     moment,
-
+    playSound() {
+      this.sound = new Audio(
+        "https://cdn.pixabay.com/audio/2022/05/05/audio_1395e7800f.mp3"
+      );
+      // sound.muted = this.audioMute;
+      this.audioMute ? this.sound.pause() : this.sound.play();
+      this.sound.autoplay = true;
+      // sound.play();
+      this.sound.loop = true;
+    },
     resetList() {
       this.getHeirachy();
       this.showToglebarttt();
       this.resetForm();
     },
     toEditProfile() {
+      var sound = new Audio(
+        "https://cdn.pixabay.com/download/audio/2022/02/17/audio_988aaf064c.mp3?filename=click-21156.mp3"
+      );
+      sound.play();
       window.scrollTo(200, 0);
       this.showProfile = !this.showProfile;
       this.editProfile = !this.editProfile;
@@ -490,7 +535,17 @@ export default {
         this.userForm[z] = "";
       });
     },
+    clickSound() {
+      var sound = new Audio(
+        "https://cdn.pixabay.com/download/audio/2022/02/17/audio_988aaf064c.mp3?filename=click-21156.mp3"
+      );
+      sound.play();
+    },
     saveUser() {
+      var sound = new Audio(
+        "https://cdn.pixabay.com/download/audio/2022/02/17/audio_988aaf064c.mp3?filename=click-21156.mp3"
+      );
+      sound.play();
       this.showLoading();
       var config = {
         method: "post",
@@ -598,6 +653,7 @@ export default {
         });
     },
     showToglebarttt(item) {
+      this.audioMute = !this.audioMute;
       if (item && item.hasOwnProperty("parent_detail")) {
         window.scrollTo(200, 0);
         this.storeParentDetail = item;
@@ -717,7 +773,7 @@ export default {
   /* height:1200px !important; */
 }
 .Family-tree {
-  zoom: 0.6;
+  zoom: 0.5;
 }
 @media (max-width: 768px) {
   .Family-tree {

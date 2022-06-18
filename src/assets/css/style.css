@@ -3837,7 +3837,8 @@ a:focus {
 .navbar {
   /* padding: 15px 10px; */
   height: 90px;
-  background-image: url("../img/border_texture.jpg") !important;
+  background: rgb(0 123 255 / 0%) !important;
+
   background-repeat: no-repeat !important;
   background-size: cover !important;
   /* background: #fff; */
@@ -3928,12 +3929,17 @@ a:focus {
   height: 100% !important;
 }
 .show_profile_class {
-  background: url("../img/texture_img.jpg");
-  background-repeat: repeat !important;
+  /* background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2, #b6c9f0) repeat;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  background-repeat: repeat !important; */
   height: 100% !important;
 }
 .user_profile_info {
-  background: url("../img/border_texture.jpg") !important;
+  /* background: url("../img/border_texture.jpg") !important; */
+  background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2) repeat;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
@@ -3995,12 +4001,43 @@ a:focus {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.wrapper-1 {
+  display: flex;
+  width: 100%;
+  /* height: 100%; */
+  align-items: stretch;
+  /* background: url("../img/texture_img.jpg"); */
+  background: linear-gradient(-45deg, #85d8ce, #85d8ce, #23a6d5, #23d5ab) repeat;
+  /* background: linear-gradient(-45deg, #f47c7c, #ef9f9f, #fad4d4, #fff2f2) repeat; */
+  background-size: 400% 400%;
+  animation: bg_gradient 15s ease infinite;
+  position: relative;
+}
+.wrapper-2 {
+  display: flex;
+  width: 100%;
+  /* height: 100%; */
+  align-items: stretch;
+  /* background: url("../img/texture_img.jpg"); */
+  /* background: linear-gradient(-45deg, #85d8ce, #85d8ce, #23a6d5, #23d5ab) repeat; */
+  background: linear-gradient(-45deg, #f47c7c, #ef9f9f, #fad4d4, #fff2f2) repeat;
+  background-size: 400% 400%;
+  animation: bg_gradient 15s ease infinite;
+  position: relative;
+}
 .wrapper {
   display: flex;
   width: 100%;
   /* height: 100%; */
   align-items: stretch;
-  background: url("../img/texture_img.jpg");
+  /* background: url("../img/texture_img.jpg"); */
+  /* background: linear-gradient(-45deg, #85d8ce, #85d8ce, #23a6d5, #23d5ab) repeat; */
+  /* background: linear-gradient(-45deg, #ffed8f, #a7d46f, #5ecc96, #3c3352) repeat; */
+  /* background: linear-gradient(-45deg, #ffcbcb, #e7fbbe, #fffdde, #d9d7f1) repeat; */
+  /* background: linear-gradient(-45deg, #f6d7a7, #f6eabe, #c8e3d4, #87aaaa) repeat; */
+  background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2) repeat;
+  background-size: 400% 400%;
+  animation: bg_gradient 15s ease infinite;
   position: relative;
 }
 
@@ -4045,7 +4082,10 @@ a:focus {
   color: #000;
   font-weight: bold;
   transition: 0.8s !important;
-  background: url("../img/texture_img.jpg");
+  /* background: url("../img/texture_img.jpg"); */
+  background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2) repeat;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
 #sidebar.active {
@@ -4172,7 +4212,9 @@ a.article:hover {
 }
 @media (max-width: 768px) {
   .sidebar_main_container {
-    background: url("../img/texture_img.jpg");
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
   }
   .line_bg_gradient {
     margin-bottom: 2px;
@@ -4212,6 +4254,17 @@ a.article:hover {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+@keyframes bg_gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 @keyframes close_anime {
   0% {

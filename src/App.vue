@@ -1,11 +1,7 @@
 <template>
   <div id="app">
     <div v-if="onLine">
-      
-
       <router-view></router-view>
-
-      
     </div>
     <div v-else>
       <connectionLost />
@@ -31,7 +27,6 @@ export default {
   },
   mounted() {
     this.pageName = this.$route.name;
-
     window.addEventListener("online", this.updateOnlineStatus);
     window.addEventListener("offline", this.updateOnlineStatus);
   },
