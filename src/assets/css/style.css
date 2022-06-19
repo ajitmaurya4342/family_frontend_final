@@ -3419,6 +3419,7 @@ input[type="number"] {
     z-index: 999;
     background-color: #ffffff;
   }
+
   /* .category-btn {
     font-size: 10px;
   } */
@@ -4223,6 +4224,9 @@ a.article:hover {
   order: 13;
 }
 @media (max-width: 768px) {
+  .family_header {
+    font-size: 40px !important;
+  }
   .sidebar_main_container {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
