@@ -1,15 +1,23 @@
 <template>
   <div>
     <div class="wrapper">
-      <audio
-        src="https://cdn.pixabay.com/audio/2022/05/05/audio_1395e7800f.mp3"
-        ref="$my_audio"
-      ></audio>
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
       <div :class="showToglebar ? 'background-blurr' : ''"></div>
       <!-- Sidebar  -->
-      <nav
+      <div
         id="sidebar"
-        :class="showToglebar ? 'active order-last' : 'order-last'"
+        :class="showToglebar ? 'active' : 'order-last'"
         v-if="showToglebar"
       >
         <div
@@ -51,7 +59,6 @@
                 class="custom_input_class"
                 placeholder="Enter Your First Name"
                 v-model="userForm.first_name"
-                @click="clickSound()"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -62,7 +69,6 @@
                 class="custom_input_class"
                 placeholder="Enter Your Last Name"
                 v-model="userForm.last_name"
-                @click="clickSound()"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -74,16 +80,11 @@
                   <b-form-radio-group
                     id="radio-group-2"
                     v-model="userForm.gender"
-                    @click="clickSound()"
                     :aria-describedby="ariaDescribedby"
                     name="gender"
                   >
-                    <b-form-radio value="Male" @click="clickSound()"
-                      >Male</b-form-radio
-                    >
-                    <b-form-radio value="Female" @click="clickSound()"
-                      >Female</b-form-radio
-                    >
+                    <b-form-radio value="Male">Male</b-form-radio>
+                    <b-form-radio value="Female">Female</b-form-radio>
                   </b-form-radio-group>
                 </b-form-group>
               </b-col>
@@ -100,14 +101,9 @@
                     v-model="userForm.is_married"
                     :aria-describedby="ariaDescribedby"
                     name="married_status"
-                    @click="clickSound()"
                   >
-                    <b-form-radio value="Y" @click="clickSound()"
-                      >Yes</b-form-radio
-                    >
-                    <b-form-radio value="N" @click="clickSound()"
-                      >No</b-form-radio
-                    >
+                    <b-form-radio value="Y">Yes</b-form-radio>
+                    <b-form-radio value="N">No</b-form-radio>
                   </b-form-radio-group>
                 </b-form-group>
               </b-col>
@@ -117,10 +113,9 @@
           <b-row class="my-2">
             <b-col sm="12">
               <b-form-input
+                class="custom_input_class"
                 placeholder="Enter Your Email"
                 type="email"
-                class="custom_input_class"
-                @click="clickSound()"
                 v-model="userForm.email"
               ></b-form-input>
             </b-col>
@@ -132,7 +127,6 @@
                 class="custom_input_class"
                 placeholder="Enter Your Phone"
                 type="number"
-                @click="clickSound()"
                 v-model="userForm.phone_number"
               ></b-form-input>
             </b-col>
@@ -145,7 +139,6 @@
             <b-col sm="12">
               <b-form-input
                 type="date"
-                @click="clickSound()"
                 class="custom_input_class"
                 v-model="userForm.dob"
               ></b-form-input>
@@ -158,9 +151,8 @@
             </b-col>
             <b-col sm="12">
               <b-form-input
-                type="date"
-                @click="clickSound()"
                 class="custom_input_class"
+                type="date"
                 v-model="userForm.dod"
               ></b-form-input>
             </b-col>
@@ -171,7 +163,6 @@
               <div class="custom_input_class">
                 <b-form-file
                   v-model="userForm.picture"
-                  @click="clickSound()"
                   v-on:change="uploadProfile($event.target)"
                   accept="image/png, image/gif, image/jpeg"
                   placeholder="Upload Your Profile"
@@ -194,7 +185,6 @@
             <b-col sm="12">
               <b-form-textarea
                 class="custom_input_class"
-                @click="clickSound()"
                 v-model="userForm.description"
               ></b-form-textarea>
             </b-col>
@@ -215,9 +205,9 @@
           </b-row>
         </b-container>
         <div id="" class="" v-if="showProfile">
-          <div class="">
+          <div class="show_profile_class">
             <div class="row d-flex justify-content-center padding-0">
-              <div class="col-xl-12 col-md-12 padding-0">
+              <div class="col-12 padding-0 sub_container_profile">
                 <div class="card user-card-full">
                   <h5
                     class="close-header profile-close"
@@ -227,23 +217,20 @@
                       src="../../assets/img/Close-298.png"
                       alt="Close"
                       class="close_icon_header"
-                      @click="clickSound()"
                     />
                   </h5>
                   <div class="row m-l-0 m-r-0">
-                    <div
-                      class="col-sm-12 bg-c-lite-green user-profile padding-0"
-                    >
-                      <div class="card-block text-center mt-2">
+                    <div class="col-sm-12 user-profile padding-0">
+                      <div class="card-block text-center  user_profile_info">
                         <div class="">
                           <img
                             v-if="userForm.picture"
                             :src="baseUrl + userForm.picture"
                             alt="User-Profile-Image"
-                            class=" img-responsive"
+                            class=" img-responsive mt-3"
                           />
                         </div>
-                        <h6 class="f-w-600 mt-2">
+                        <h6 class="f-w-600 m-0 text-white profile_text py-3">
                           {{ userForm.first_name }} {{ userForm.last_name }}
                         </h6>
                         <!-- <p>Web Designer</p> -->
@@ -308,14 +295,20 @@
                   </div>
                   <hr />
                 </div>
+
                 <b-row class="my-5">
                   <b-col sm="12" class="text-center">
                     <button
                       type="button"
-                      class="btn btn-info"
+                      class="btn update_btn update_btn_border"
                       @click="toEditProfile"
                     >
-                      <span>Update Profile</span>
+                      <img
+                        src="../../assets/img/Data-Edit-148.png"
+                        alt=""
+                        class="update_icon"
+                      />
+                      Edit
                     </button>
                   </b-col>
                 </b-row>
@@ -323,7 +316,7 @@
             </div>
           </div>
         </div>
-      </nav>
+      </div>
 
       <!-- Page Content  -->
       <div id="content">
@@ -351,7 +344,7 @@
           <VueFamilyTree
             :tree="tree2"
             :enable-drag="true"
-            class="Family-tree"
+            class="Family-tree click_trigger"
             :wrapper-styles="{
               position: 'relative',
               width: '100%',
@@ -454,7 +447,18 @@ export default {
       audioMute: true
     };
   },
-  mounted() {},
+  mounted() {
+     setInterval(z=>{
+        if(this.showProfile || this.editProfile){
+          this.audioMute=true
+        }else{
+          this.audioMute=false
+          this.sound.play();
+          console.log("Sound Play")
+        }
+        
+      },5000)
+  },
 
   components: {
     VueFamilyTree
@@ -491,6 +495,7 @@ export default {
     console.log(this.is_admin_page);
     this.resetList();
     this.playSound();
+       
   },
   watch: {
     audioMute(val) {
@@ -517,10 +522,6 @@ export default {
       this.resetForm();
     },
     toEditProfile() {
-      var sound = new Audio(
-        "https://cdn.pixabay.com/download/audio/2022/02/17/audio_988aaf064c.mp3?filename=click-21156.mp3"
-      );
-      sound.play();
       window.scrollTo(200, 0);
       this.showProfile = !this.showProfile;
       this.editProfile = !this.editProfile;
@@ -535,17 +536,7 @@ export default {
         this.userForm[z] = "";
       });
     },
-    clickSound() {
-      var sound = new Audio(
-        "https://cdn.pixabay.com/download/audio/2022/02/17/audio_988aaf064c.mp3?filename=click-21156.mp3"
-      );
-      sound.play();
-    },
     saveUser() {
-      var sound = new Audio(
-        "https://cdn.pixabay.com/download/audio/2022/02/17/audio_988aaf064c.mp3?filename=click-21156.mp3"
-      );
-      sound.play();
       this.showLoading();
       var config = {
         method: "post",
@@ -768,23 +759,39 @@ export default {
 </script>
 
 <style>
+.vue-family-card__name a {
+  /* font-family: "Allura", cursive !important; */
+  font-weight: 800 !important;
+  /* color: #ef7c8e !important; */
+  /* font-size: 35px; */
+}
+/* .order-last {
+  position: absolute;
+  left: -50%;
+  top: 0%;
+}
+.active .order-last {
+  left: 180%;
+  top: 0%;
+  width: 100%;
+} */
 .vue-family-tree {
   overflow: scroll !important;
   /* height:1200px !important; */
 }
 .Family-tree {
-  zoom: 0.5;
+  zoom: 0.35;
 }
 @media (max-width: 768px) {
   .Family-tree {
-    zoom: 0.4;
+    zoom: 0.25;
   }
 }
 .zoom-8 {
   zoom: 0.55;
 }
 .vue-family-card__image {
-  border: 5px solid #2b3d4e;
+  border: 5px solid #ef7c8e;
   border-radius: 100px !important;
 }
 .title_header {
@@ -828,7 +835,7 @@ export default {
   height: 27px;
   width: 27px;
   border-radius: 27px;
-  background-color: #000000 !important;
+  /* background-color: #000000 !important; */
   color: #fff;
   text-align: center;
   font-weight: bold;
@@ -973,5 +980,144 @@ export default {
   top: 10%;
   z-index: 9;
   left: 90%;
+  transition: 0.8s;
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+#sidebar {
+  position: absolute !important;
+  right: -50% !important;
+  top: 0 !important;
+  transform: translate(0%, 0%) !important;
+  height: 100%;
+  min-width: 400px;
+  max-width: 400px;
+  background: #fff;
+  color: #000;
+  font-weight: bold;
+  transition: 0.8s !important;
+  /* background: url("../img/texture_img.jpg"); */
+  /* background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2) repeat; */
+  background: linear-gradient(-75deg, #ffaebc, #a0e7e5, #b4f8c8, #fbe7c6) repeat;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+.user_profile,
+.user-card-full,
+.user_profile_info {
+  /* background: url("../img/border_texture.jpg") !important; */
+  box-shadow: none !important;
+  background: rgb(0 123 255 / 0%) !important;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(-1000px) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(0) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
 }
 </style>

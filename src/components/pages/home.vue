@@ -1,6 +1,18 @@
 <template>
   <div>
     <div class="wrapper">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
       <div :class="showToglebar ? 'background-blurr' : ''"></div>
       <!-- Sidebar  -->
       <div
@@ -47,7 +59,6 @@
                 class="custom_input_class"
                 placeholder="Enter Your First Name"
                 v-model="userForm.first_name"
-                @click="clickSound"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -58,7 +69,6 @@
                 class="custom_input_class"
                 placeholder="Enter Your Last Name"
                 v-model="userForm.last_name"
-                @click="clickSound"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -107,7 +117,6 @@
                 placeholder="Enter Your Email"
                 type="email"
                 v-model="userForm.email"
-                @click="clickSound"
               ></b-form-input>
             </b-col>
           </b-row>
@@ -118,7 +127,6 @@
                 class="custom_input_class"
                 placeholder="Enter Your Phone"
                 type="number"
-                @click="clickSound"
                 v-model="userForm.phone_number"
               ></b-form-input>
             </b-col>
@@ -132,7 +140,6 @@
               <b-form-input
                 type="date"
                 class="custom_input_class"
-                @click="clickSound"
                 v-model="userForm.dob"
               ></b-form-input>
             </b-col>
@@ -146,7 +153,6 @@
               <b-form-input
                 class="custom_input_class"
                 type="date"
-                @click="clickSound"
                 v-model="userForm.dod"
               ></b-form-input>
             </b-col>
@@ -160,7 +166,6 @@
                   v-on:change="uploadProfile($event.target)"
                   accept="image/png, image/gif, image/jpeg"
                   placeholder="Upload Your Profile"
-                  @click="clickSound"
                 ></b-form-file>
               </div>
             </b-col>
@@ -212,13 +217,10 @@
                       src="../../assets/img/Close-298.png"
                       alt="Close"
                       class="close_icon_header"
-                      @click="clickSound"
                     />
                   </h5>
                   <div class="row m-l-0 m-r-0">
-                    <div
-                      class="col-sm-12 bg-c-lite-green user-profile padding-0"
-                    >
+                    <div class="col-sm-12 user-profile padding-0">
                       <div class="card-block text-center  user_profile_info">
                         <div class="">
                           <img
@@ -445,7 +447,18 @@ export default {
       audioMute: true
     };
   },
-  mounted() {},
+  mounted() {
+     setInterval(z=>{
+        if(this.showProfile || this.editProfile){
+          this.audioMute=true
+        }else{
+          this.audioMute=false
+          this.sound.play();
+          console.log("Sound Play")
+        }
+        
+      },5000)
+  },
 
   components: {
     VueFamilyTree
@@ -482,6 +495,7 @@ export default {
     console.log(this.is_admin_page);
     this.resetList();
     this.playSound();
+       
   },
   watch: {
     audioMute(val) {
@@ -745,9 +759,10 @@ export default {
 </script>
 
 <style>
-.vue-family-card__name {
+.vue-family-card__name a {
   /* font-family: "Allura", cursive !important; */
   font-weight: 800 !important;
+  /* color: #ef7c8e !important; */
   /* font-size: 35px; */
 }
 /* .order-last {
@@ -765,18 +780,18 @@ export default {
   /* height:1200px !important; */
 }
 .Family-tree {
-  zoom: 0.5;
+  zoom: 0.35;
 }
 @media (max-width: 768px) {
   .Family-tree {
-    zoom: 0.4;
+    zoom: 0.25;
   }
 }
 .zoom-8 {
   zoom: 0.55;
 }
 .vue-family-card__image {
-  border: 5px solid #2b3d4e;
+  border: 5px solid #ef7c8e;
   border-radius: 100px !important;
 }
 .title_header {
@@ -966,5 +981,143 @@ export default {
   z-index: 9;
   left: 90%;
   transition: 0.8s;
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+#sidebar {
+  position: absolute !important;
+  right: -50% !important;
+  top: 0 !important;
+  transform: translate(0%, 0%) !important;
+  height: 100%;
+  min-width: 400px;
+  max-width: 400px;
+  background: #fff;
+  color: #000;
+  font-weight: bold;
+  transition: 0.8s !important;
+  /* background: url("../img/texture_img.jpg"); */
+  /* background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2) repeat; */
+  background: linear-gradient(-75deg, #ffaebc, #a0e7e5, #b4f8c8, #fbe7c6) repeat;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+.user_profile,
+.user-card-full,
+.user_profile_info {
+  /* background: url("../img/border_texture.jpg") !important; */
+  box-shadow: none !important;
+  background: rgb(0 123 255 / 0%) !important;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(-1000px) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(0) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
 }
 </style>
