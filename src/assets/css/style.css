@@ -3877,8 +3877,14 @@ a:focus {
   /* height: 100%; */
 }
 .custom_input_class {
-  border: 2px solid #1c2c39;
+  box-shadow: 0px 0px 6px 0px #8eee7c;
+  background: #fff;
+  /* border: 2px solid #1c2c39; */
   border-radius: 5px;
+}
+.title-input {
+  color: #e94f67;
+  font-size: 16px;
 }
 .form-control:focus {
   border: 2px solid #1c2c39;
@@ -3945,10 +3951,9 @@ a:focus {
 }
 .family_header {
   background: -webkit-linear-gradient(
-    260deg,
-    rgba(153, 153, 153, 1) 33%,
-    rgba(255, 255, 255, 1) 44%,
-    rgba(218, 218, 218, 1) 29%
+    120deg,
+    #e94f67 50%,
+    /* rgba(218, 218, 218, 1) 29% */ #ef7c8e 50%
   );
   font-weight: 900 !important;
   font-family: "Allura", cursive;
@@ -3963,20 +3968,24 @@ a:focus {
 .line_bg_gradient,
 .line_bg_gradient-1 {
   background: -webkit-linear-gradient(
-    260deg,
-    rgba(153, 153, 153, 1) 33%,
-    rgba(255, 255, 255, 1) 44%,
-    rgba(218, 218, 218, 1) 29%
+    317deg,
+    #ef7c8e 50%,
+    #d8a7b1 50% /* rgba(218, 218, 218, 1) 29% */
   );
   height: 3px;
   /* height: auto; */
 }
 .profile_text {
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
     317deg,
     rgba(153, 153, 153, 1) 33%,
     rgba(255, 255, 255, 1) 44%,
     rgba(218, 218, 218, 1) 29%
+  ); */
+  background: -webkit-linear-gradient(
+    281deg,
+    #ef7c8e 50%,
+    #d8a7b1 50% /* rgba(218, 218, 218, 1) 29% */
   );
   font-weight: 900 !important;
   font-family: "Allura", cursive;
@@ -3987,19 +3996,21 @@ a:focus {
   -webkit-text-fill-color: transparent;
 }
 .label_header {
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
     250deg,
     rgba(28, 44, 57, 1) 8%,
     rgba(66, 98, 124, 1) 48%,
     rgba(45, 70, 91, 1) 83%
-  );
+  ); */
+  color: #ef7c8e !important;
+
   font-weight: 900 !important;
   font-family: "Allura", cursive;
   /* font-family: "Monsieur La Doulaise", cursive; */
   font-size: 30px !important;
   /* letter-spacing: 10px !important; */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
 }
 .wrapper-1 {
   display: flex;
@@ -4035,7 +4046,8 @@ a:focus {
   /* background: linear-gradient(-45deg, #ffed8f, #a7d46f, #5ecc96, #3c3352) repeat; */
   /* background: linear-gradient(-45deg, #ffcbcb, #e7fbbe, #fffdde, #d9d7f1) repeat; */
   /* background: linear-gradient(-45deg, #f6d7a7, #f6eabe, #c8e3d4, #87aaaa) repeat; */
-  background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2) repeat;
+  background: linear-gradient(-75deg, #ffaebc, #a0e7e5, #b4f8c8, #fbe7c6) repeat;
+  /* background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2) repeat; */
   background-size: 400% 400%;
   animation: bg_gradient 15s ease infinite;
   position: relative;

@@ -747,9 +747,10 @@ export default {
 </script>
 
 <style>
-.vue-family-card__name {
+.vue-family-card__name a {
   /* font-family: "Allura", cursive !important; */
   font-weight: 800 !important;
+  /* color: #ef7c8e !important; */
   /* font-size: 35px; */
 }
 /* .order-last {
@@ -778,7 +779,7 @@ export default {
   zoom: 0.55;
 }
 .vue-family-card__image {
-  border: 5px solid #2b3d4e;
+  border: 5px solid #ef7c8e;
   border-radius: 100px !important;
 }
 .title_header {
@@ -985,7 +986,7 @@ export default {
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.8);
   animation: animate 25s linear infinite;
   bottom: -150px;
 }
@@ -1077,7 +1078,8 @@ export default {
   font-weight: bold;
   transition: 0.8s !important;
   /* background: url("../img/texture_img.jpg"); */
-  background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2) repeat;
+  /* background: linear-gradient(-75deg, #e93b81, #f5abc9, #ffe5e2) repeat; */
+  background: linear-gradient(-75deg, #ffaebc, #a0e7e5, #b4f8c8, #fbe7c6) repeat;
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
@@ -1092,6 +1094,7 @@ export default {
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
+
 @keyframes animate {
   0% {
     transform: translateY(-1000px) rotate(0deg);
