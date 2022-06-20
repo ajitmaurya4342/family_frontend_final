@@ -344,7 +344,8 @@
           <VueFamilyTree
             :tree="tree2"
             :enable-drag="true"
-            class="Family-tree click_trigger"
+            id="familyTree"
+            class=" click_trigger"
             :wrapper-styles="{
               position: 'relative',
               width: '100%',
@@ -458,6 +459,11 @@ export default {
         }
         
       },5000)
+       if(screen.width>768){
+          let element=document.getElementById("familyTree")
+         element.classList.add("Family-tree");
+       
+       }
   },
 
   components: {
@@ -495,6 +501,7 @@ export default {
     console.log(this.is_admin_page);
     this.resetList();
     this.playSound();
+   
        
   },
   watch: {
@@ -657,7 +664,10 @@ export default {
       if (item && item.hasOwnProperty("user_detail")) {
         this.is_son_or_daughter = item.is_son_or_daugter;
         this.checkChildrenExist = item.checkChildrenExist;
+        if(screen.width>768){
         window.scrollTo(200, 0);
+
+        }
 
         this.userDetail = item.user_detail;
         if (this.is_admin_page) {
@@ -669,6 +679,17 @@ export default {
         Object.keys(this.userForm).map(z => {
           this.userForm[z] = this.userDetail[z];
         });
+
+        if(screen.width<768){
+          document.getElementsByTagName("meta")[2].setAttribute("content","initial-scale=1.0")
+          window.scrollTo(200, 0);
+        }
+
+      }else{
+         if(screen.width<768){
+          document.getElementsByTagName("meta")[2].setAttribute("content","initial-scale=0.25")
+           window.scrollTo(0, 0);
+        }
       }
 
       this.showToglebar = !this.showToglebar;
@@ -981,6 +1002,7 @@ export default {
   z-index: 9;
   left: 90%;
   transition: 0.8s;
+  background:#000
 }
 
 .circles {
