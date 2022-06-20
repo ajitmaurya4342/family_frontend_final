@@ -344,7 +344,8 @@
           <VueFamilyTree
             :tree="tree2"
             :enable-drag="true"
-            class="Family-tree click_trigger"
+            id="familyTree"
+            class=" click_trigger"
             :wrapper-styles="{
               position: 'relative',
               width: '100%',
@@ -458,6 +459,11 @@ export default {
         }
         
       },5000)
+       if(screen.width>768){
+          let element=document.getElementById("familyTree")
+         element.classList.add("Family-tree");
+       
+       }
   },
 
   components: {
@@ -495,6 +501,7 @@ export default {
     console.log(this.is_admin_page);
     this.resetList();
     this.playSound();
+   
        
   },
   watch: {
