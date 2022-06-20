@@ -987,7 +987,7 @@ export default {
   width: 20px;
   height: 20px;
   background: rgba(255, 255, 255, 0.8);
-  animation: animate 25s linear infinite;
+  animation: animate 5s linear infinite;
   bottom: -150px;
 }
 
