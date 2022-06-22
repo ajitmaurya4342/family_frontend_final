@@ -515,7 +515,7 @@ export default {
     moment,
     playSound() {
       this.sound = new Audio(
-        "https://cdn.pixabay.com/audio/2022/05/05/audio_1395e7800f.mp3"
+       `${URL_BASE}/AUD-20220620-WA0065.mp3`
       );
       // sound.muted = this.audioMute;
       this.audioMute ? this.sound.pause() : this.sound.play();
