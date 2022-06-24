@@ -110,7 +110,22 @@
             </b-row>
           </template>
 
+           <b-row class="my-2" v-if="is_son_or_daughter">
+             <b-col sm="12">
+              <label class="title-input">Child Order</label>
+            </b-col>
+            <b-col sm="12">
+              <b-form-input
+                type="number"
+                class="custom_input_class"
+                placeholder="Enter Your Order Child"
+                v-model="userForm.order_child"
+              ></b-form-input>
+            </b-col>
+          </b-row>
+
           <b-row class="my-2">
+           
             <b-col sm="12">
               <b-form-input
                 class="custom_input_class"
@@ -434,7 +449,8 @@ export default {
         dod: "",
         picture: "",
         is_married: "",
-        gender: ""
+        gender: "",
+        order_child:0
       },
       editProfile: false,
       is_son_or_daughter: true,
@@ -540,7 +556,12 @@ export default {
       this.userDetail = null;
       this.checkChildrenExist = false;
       Object.keys(this.userForm).map(z => {
-        this.userForm[z] = "";
+        if(z=='order_child'){
+        this.userForm[z] = 0;
+        }else{
+           this.userForm[z] = "";
+        }
+      
       });
     },
     saveUser() {
@@ -702,7 +723,7 @@ export default {
 
       if (z.is_married == "Y") {
         if (z.children.length > 0) {
-          z.children = _.orderBy(z.children, ["user_id", "asc"]);
+          z.children = _.orderBy(z.children, ["sorting_order_child", "asc"]);
         }
         if (z.hasOwnProperty("children")) {
           if (z.children.length == 0) {
