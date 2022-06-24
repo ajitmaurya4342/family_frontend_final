@@ -38,7 +38,7 @@
           <b-row class="my-2" v-if="storeParentDetail">
             <b-col sm="12">
               <label class="label_header"
-                >Creating Son of
+                >Creating Children of
                 {{ storeParentDetail.parent_detail.first_name }}
                 {{ storeParentDetail.parent_detail.last_name }}</label
               >
@@ -93,7 +93,7 @@
             <b-row class="">
               <b-col sm="12">
                 <b-form-group
-                  label="Are you Married?"
+                  label="Marial Status:"
                   v-slot="{ ariaDescribedby }"
                 >
                   <b-form-radio-group
