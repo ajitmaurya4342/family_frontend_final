@@ -3996,7 +3996,11 @@ a:focus {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.label_header {
+.modal-body {
+  background: rgba(0, 0, 0, 0.166) !important;
+}
+.label_header,
+.modal_font {
   /* background: -webkit-linear-gradient(
     250deg,
     rgba(28, 44, 57, 1) 8%,

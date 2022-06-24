@@ -110,8 +110,8 @@
             </b-row>
           </template>
 
-           <b-row class="my-2" v-if="is_son_or_daughter">
-             <b-col sm="12">
+          <b-row class="my-2" v-if="is_son_or_daughter">
+            <b-col sm="12">
               <label class="title-input">Child Order</label>
             </b-col>
             <b-col sm="12">
@@ -125,7 +125,6 @@
           </b-row>
 
           <b-row class="my-2">
-           
             <b-col sm="12">
               <b-form-input
                 class="custom_input_class"
@@ -371,6 +370,20 @@
         </div>
       </div>
     </div>
+    <div>
+      <b-modal ref="welcomeModal" hide-footer hide-header>
+        <div class="d-block text-center">
+          <h3 class="modal_font">Welcome to Shroff Family</h3>
+        </div>
+        <b-button
+          class="mt-5 w-25 mx-auto"
+          variant="outline-danger"
+          block
+          @click="hideModal"
+          >OK</b-button
+        >
+      </b-modal>
+    </div>
   </div>
 </template>
 
@@ -450,7 +463,7 @@ export default {
         picture: "",
         is_married: "",
         gender: "",
-        order_child:0
+        order_child: 0
       },
       editProfile: false,
       is_son_or_daughter: true,
@@ -465,21 +478,20 @@ export default {
     };
   },
   mounted() {
-     setInterval(z=>{
-        if(this.showProfile || this.editProfile){
-          this.audioMute=true
-        }else{
-          this.audioMute=false
-          this.sound.play();
-          console.log("Sound Play")
-        }
-        
-      },5000)
-       if(screen.width>768){
-          let element=document.getElementById("familyTree")
-         element.classList.add("Family-tree");
-       
-       }
+    this.showModal();
+    setInterval(z => {
+      if (this.showProfile || this.editProfile) {
+        this.audioMute = true;
+      } else {
+        this.audioMute = false;
+        this.sound.play();
+        console.log("Sound Play");
+      }
+    }, 5000);
+    if (screen.width > 768) {
+      let element = document.getElementById("familyTree");
+      element.classList.add("Family-tree");
+    }
   },
 
   components: {
@@ -517,8 +529,6 @@ export default {
     console.log(this.is_admin_page);
     this.resetList();
     this.playSound();
-   
-       
   },
   watch: {
     audioMute(val) {
@@ -529,10 +539,14 @@ export default {
   },
   methods: {
     moment,
+    showModal() {
+      this.$refs["welcomeModal"].show();
+    },
+    hideModal() {
+      this.$refs["welcomeModal"].hide();
+    },
     playSound() {
-      this.sound = new Audio(
-       `${URL_BASE}/AUD-20220620-WA0065.mp3`
-      );
+      this.sound = new Audio(`${URL_BASE}/AUD-20220620-WA0065.mp3`);
       // sound.muted = this.audioMute;
       this.audioMute ? this.sound.pause() : this.sound.play();
       this.sound.autoplay = true;
@@ -556,12 +570,11 @@ export default {
       this.userDetail = null;
       this.checkChildrenExist = false;
       Object.keys(this.userForm).map(z => {
-        if(z=='order_child'){
-        this.userForm[z] = 0;
-        }else{
-           this.userForm[z] = "";
+        if (z == "order_child") {
+          this.userForm[z] = 0;
+        } else {
+          this.userForm[z] = "";
         }
-      
       });
     },
     saveUser() {
@@ -685,9 +698,8 @@ export default {
       if (item && item.hasOwnProperty("user_detail")) {
         this.is_son_or_daughter = item.is_son_or_daugter;
         this.checkChildrenExist = item.checkChildrenExist;
-        if(screen.width>768){
-        window.scrollTo(200, 0);
-
+        if (screen.width > 768) {
+          window.scrollTo(200, 0);
         }
 
         this.userDetail = item.user_detail;
@@ -701,15 +713,18 @@ export default {
           this.userForm[z] = this.userDetail[z];
         });
 
-        if(screen.width<768){
-          document.getElementsByTagName("meta")[2].setAttribute("content","initial-scale=1.0")
+        if (screen.width < 768) {
+          document
+            .getElementsByTagName("meta")[2]
+            .setAttribute("content", "initial-scale=1.0");
           window.scrollTo(200, 0);
         }
-
-      }else{
-         if(screen.width<768){
-          document.getElementsByTagName("meta")[2].setAttribute("content","initial-scale=0.25")
-           window.scrollTo(0, 0);
+      } else {
+        if (screen.width < 768) {
+          document
+            .getElementsByTagName("meta")[2]
+            .setAttribute("content", "initial-scale=0.25");
+          window.scrollTo(0, 0);
         }
       }
 
@@ -1023,7 +1038,7 @@ export default {
   z-index: 9;
   left: 90%;
   transition: 0.8s;
-  background:#000
+  background: #000;
 }
 
 .circles {
