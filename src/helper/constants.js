@@ -8,7 +8,7 @@
 // export const BASEURL = 'http://13.228.128.234';
 // export const BASEURL = 'http://api.gogocinema.com';
 
-var url = 'http://localhost:5000';
+var url = 'https://api-shrofffamily.binarynumbers.io';
 
 export const URL_BASE = url;
-export const PROJECT_TITLE = "GoGoCinema";
+export const PROJECT_TITLE = "Shroff Family Tree";

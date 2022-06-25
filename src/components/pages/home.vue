@@ -76,7 +76,7 @@
           <template v-if="is_son_or_daughter && !checkChildrenExist">
             <b-row class="my-2">
               <b-col sm="12">
-                <b-form-group label="Gender" v-slot="{ ariaDescribedby }">
+                <b-form-group label="Gender:" v-slot="{ ariaDescribedby }">
                   <b-form-radio-group
                     id="radio-group-2"
                     v-model="userForm.gender"
@@ -109,6 +109,30 @@
               </b-col>
             </b-row>
           </template>
+
+          <div style="color:red;font-size:16px" v-if="isSaveButtonEnable">(Note : Please Fill all the details Above)</div>
+
+          <b-row class="my-2">
+            <b-col sm="12" class="text-center">
+              <button
+                type="button"
+                class="btn save_btn"
+                @click="saveUser"
+                :disabled="isSaveButtonEnable"
+              >
+                <img src="../../assets/img/Save.png" alt="" class="save_icon" />
+                Save
+              </button>
+            </b-col>
+          </b-row>
+
+          <b-row class="my-2" >
+            <b-col sm="12">
+              <h5  style="color:#000;font-weight:bold">Extra Information: </h5>
+            </b-col>
+         
+          </b-row>
+
 
           <b-row class="my-2" v-if="is_son_or_daughter">
             <b-col sm="12">
@@ -546,12 +570,22 @@ export default {
       this.$refs["welcomeModal"].hide();
     },
     playSound() {
-      this.sound = new Audio(`${URL_BASE}/AUD-20220620-WA0065.mp3`);
+       var config = {
+        method: "get",
+        url: `${URL_BASE}/admin/getMusic`
+      };
+      axios(config)
+        .then(response => {
+      this.sound = new Audio(
+          response.data.playMusic
+      );
       // sound.muted = this.audioMute;
       this.audioMute ? this.sound.pause() : this.sound.play();
       this.sound.autoplay = true;
       // sound.play();
       this.sound.loop = true;
+
+        });
     },
     resetList() {
       this.getHeirachy();
